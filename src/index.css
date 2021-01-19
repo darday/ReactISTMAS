@@ -5,9 +5,26 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+}
+a{
+  color: red;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.color-istmas{
+  color: #76a349;
+}
+.back-istmas{
+  
+  background-color: #76a349;
+  border-color: #76a349;
+  color: white;
+  
+  
+}
+

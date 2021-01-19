@@ -1,0 +1,15 @@
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 103%;
+    background-color: #718087;
+    color: white;
+    text-align: center;
+    padding-top:1%;
+ 
+  }
+
+  .container2{
+      padding-left: 10%;
+  }
