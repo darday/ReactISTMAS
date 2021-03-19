@@ -1,0 +1,14 @@
+.centrar{
+   
+    margin-left: auto  !important; 
+    margin-right: auto !important;
+}
+
+.head-form{
+    background: #76a349 !important;
+    height: 100px !important;
+    /*IMPORTANTE*/
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
