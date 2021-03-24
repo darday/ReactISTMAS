@@ -8,10 +8,12 @@ import { ListarDocentes } from '../components/administrador/docentes/ListarDocen
 import InscribirEstudiantes from '../components/administrador/inscripción/InscribirEstudiantes'
 import ListarEstudiantesInscritos from '../components/administrador/inscripción/ListarEstudiantesInscritos'
 import ListarSolicitudMatricula from '../components/administrador/matriculas/ListarSolicitudMatricula'
+import ListarPagos from '../components/administrador/pagos/ListarPagos';
 import EditarPerfilAdministrativo from '../components/administrador/perfil/EditarPerfilAdministrativo'
 import PerfilAdministrativo from '../components/administrador/perfil/PerfilAdministrativo'
 import AgregarPersAdmin from '../components/administrador/personalAdmin/AgregarPersAdmin'
 import ListarPersonalAdministrativo from '../components/administrador/personalAdmin/ListarPersonalAdministrativo'
+import VerInfoAdministrativo from '../components/administrador/personalAdmin/VerInfoAdministrativo';
 import Contenido from '../components/contenido/Contenido'
 import FooterDashboard from '../components/footer/FooterDashboard'
 import NavbarGeneral from '../components/navbar/NavbarGeneral'
@@ -80,6 +82,7 @@ export default class RutasAdministrativo extends Component {
                                    
                                     <Route  path="/administrativo/IngresarPersonalAdministrativo"  component={AgregarPersAdmin} />                         
                                     <Route  path="/administrativo/ListarPersonalAdministrativo"  component={ListarPersonalAdministrativo} />                         
+                                    <Route  path="/administrativo/VerInfoAdministrativo"  component={VerInfoAdministrativo} />                         
                                     
                                     {/* Inscripciones */}
                                     <Route  path="/administrativo/ListarEstudiantesInscritos"  component={ListarEstudiantesInscritos} />                          
@@ -87,6 +90,9 @@ export default class RutasAdministrativo extends Component {
 
                                     {/*  Matriculas */}
                                     <Route  path="/administrativo/ListarSolicitudMatriculas"  component={ListarSolicitudMatricula} />   
+
+                                    {/*   PAGOS */}
+                                    <Route  path="/administrativo/ListarPagos"  component={ListarPagos} />   
 
 
                             </div>

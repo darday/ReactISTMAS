@@ -65,6 +65,12 @@ export default class ListarSolicitudMatricula extends Component {
             const res = respuesta.data;
             
             console.log(res);
+            axios.get(ApiUrl+"matriculas?carrera_id="+this.state.idCarrera+"&ciclo_academico_id="+this.state.idCiclo)
+            .then(respuesta=>{
+                const matric = respuesta.data;
+                this.setState({matriculas:matric})
+                console.log(this.state.matriculas);
+            })
         })
 
        
@@ -80,6 +86,12 @@ export default class ListarSolicitudMatricula extends Component {
             const res = respuesta.data;
             
             console.log(res);
+            axios.get(ApiUrl+"matriculas?carrera_id="+this.state.idCarrera+"&ciclo_academico_id="+this.state.idCiclo)
+            .then(respuesta=>{
+                const matric = respuesta.data;
+                this.setState({matriculas:matric})
+                console.log(this.state.matriculas);
+            })
         })
         
 

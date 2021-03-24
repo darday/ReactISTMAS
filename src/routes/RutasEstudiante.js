@@ -12,6 +12,9 @@ import SidebarEstudiante from '../components/sidebar/SidebarEstudiante'
 import "../components/services/ApiRest";
 import { ApiUrl } from '../components/services/ApiRest'
 import VerMisMatriculas from '../components/estudiante/matriculas/VerMisMatriculas'
+import AgregarPago from '../components/estudiante/pagos/AgregarPago'
+import AgregarPagoMatricula from '../components/estudiante/matriculas/AgregarPagoMatricula'
+import EstadoMisPagosPension from '../components/estudiante/pagos/EstadoMisPagosPension'
 
 
 const cookie= new Cookies();
@@ -113,7 +116,11 @@ export default class RutasEstudiante extends Component {
                                     <Route  path="/estudiante/EstudianteVerPerfil"  component={VerPerfil} />                         
                                     <Route  path="/estudiante/EditarPerfil"  component={EditarPerfil} />                         
                                    
-                                    <Route  path="/estudiante/EstudianteMisMatriculas"  component={VerMisMatriculas} />                         
+                                    <Route  path="/estudiante/EstudianteMisMatriculas"  component={VerMisMatriculas} />   
+                                    <Route  path="/estudiante/AgregarPagoMatricula" component={AgregarPagoMatricula} />   
+
+                                    <Route path="/estudiante/EstudianteAgregarPago" component={AgregarPago}/>                      
+                                    <Route path="/estudiante/EstadoMisPagosPension" component={EstadoMisPagosPension}/>                      
                                                            
                             </div>
                         </main>

@@ -211,28 +211,20 @@ export default class Matricularme extends Component {
                 .post(ApiUrl+"matriculas",f,config)
                 .then(response => {
                     console.log(response)
-                    this.setState({estado:"Su matrícula ha sido enviada para revisión"});
-                    
-                
+                    this.setState({estado:"Su matrícula ha sido enviada para revisión"});       
                 })
                 .catch(error => {
                     console.log(error);
-                    this.setState({estado:"Error No se pudo conectar con el servidor"});
-    
+                    this.setState({estado:"Error No se pudo conectar con el servidor"});    
                 })  
 
             }else{
                 this.setState({estado:"No se ha seleccionado una horario válido"});
-
-
             }
 
            }
-
            
         }
-
-
         
        
        /* if(!this.state.cursoMatricularse){

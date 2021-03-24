@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import "../../services/ApiRest";
 import { ApiUrl } from '../../services/ApiRest';
+import VerInfoAdministrativo from './VerInfoAdministrativo';
 
 export default class ListarPersonalAdministrativo extends Component {
     constructor(props){
@@ -84,7 +85,7 @@ export default class ListarPersonalAdministrativo extends Component {
                                         <th>Cédula Identidad</th>
                                         <th>Celular</th>
                                         <th>Email</th>
-                                        <th>Acciones</th>
+                                        {/* <th>Acciones</th> */}
                                     </tr>
                                 </thead>
                             
@@ -97,10 +98,10 @@ export default class ListarPersonalAdministrativo extends Component {
                                             <td>{consola.numero_identificacion_administrativo}</td>
                                             <td>{consola.celular_administrativo}</td>
                                             <td>{consola.email_administrativo}</td>
-                                            <td style={{textAlign:"center"}}>
+                                            {/* <td style={{textAlign:"center"}}>
                                                 <Link to="/administrativo/VerInfoAdministrativo" >                                                    
                                                     <button className="btn btn-outline-info" onClick={()=> this.enviarDatos(consola)}  > 
-                                                        <i className="far fa-eye"></i>
+                                                        <i className="far fa-eye"></i><VerInfoAdministrativo datos={this.enviarDatosObj}  />
                                                     </button>
                                                 </Link>
                                                 <button className="btn btn-outline-success"  > 
@@ -112,7 +113,7 @@ export default class ListarPersonalAdministrativo extends Component {
                                                         <i className=" puntero fas fa-trash-alt" ></i>          
                                                     </button>
                                                 </Link>    
-                                            </td>                                      
+                                            </td>                                       */}
                                         </tr>
                                     ))} 
                                 

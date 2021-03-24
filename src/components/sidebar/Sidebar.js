@@ -104,7 +104,7 @@ export default class Sidebar extends Component {
                                            
                                         </nav>
                                     </div>
-                                    <div className="nav-link collapsed puntero" href="#" data-toggle="collapse" data-target="#collapseDocentes" aria-expanded="false" aria-controls="collapseLayouts">
+                                    {/* <div className="nav-link collapsed puntero" href="#" data-toggle="collapse" data-target="#collapseDocentes" aria-expanded="false" aria-controls="collapseLayouts">
                                         <div className="sb-nav-link-icon">
                                             <i className="fas fa-graduation-cap"></i>                                        </div>
                                         DOCENTES
@@ -121,7 +121,7 @@ export default class Sidebar extends Component {
                                             
                                            
                                         </nav>
-                                    </div>
+                                    </div> */}
 
                                     <div className="nav-link collapsed puntero" href="#" data-toggle="collapse" data-target="#collapseInscripcion" aria-expanded="false" aria-controls="collapseLayouts">
                                         <div className="sb-nav-link-icon">
@@ -151,7 +151,7 @@ export default class Sidebar extends Component {
                                     <div className="collapse" id="collapseMatriculas" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                         <nav className="sb-sidenav-menu-nested nav">
                                             <Link to="/administrativo/ListarSolicitudMatriculas"><div className="nav-link" href="#">Listar solicitud de matrículas </div></Link>
-                                            <div className="nav-link" href="#">Reporte de Solicitude de matrículas</div>
+                                            {/* <div className="nav-link" href="#">Reporte de Solicitude de matrículas</div> */}
                                         </nav>
                                     </div>
 
@@ -159,19 +159,21 @@ export default class Sidebar extends Component {
                                         <div className="sb-nav-link-icon">
                                         <i className="fas fa-dollar-sign"></i>
                                         </div>
-                                        PAGOS
+                                        PAGOS DE PENSIONES
                                         <div className="sb-sidenav-collapse-arrow">
                                             <i className="fas fa-angle-down"></i>
                                         </div>
                                     </div>
                                     <div className="collapse" id="collapsePagos" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                         <nav className="sb-sidenav-menu-nested nav">
-                                            <div className="nav-link" href="#">Buscar Comprobante por CI</div>
-                                            <div className="nav-link" href="#">Listar Comprobantes de Pagos </div>
+                                            {/* <div className="nav-link" href="#">Buscar Comprobante por CI</div> */}
+                                            <Link to="/administrativo/ListarPagos">
+                                                <div className="nav-link" href="#">Listar Comprobantes de Pagos </div>
+                                            </Link>
                                         </nav>
                                     </div>
 
-                                    <div className="nav-link collapsed puntero" href="#" data-toggle="collapse" data-target="#collapseHistorias" aria-expanded="false" aria-controls="collapseLayouts">
+                                    {/* <div className="nav-link collapsed puntero" href="#" data-toggle="collapse" data-target="#collapseHistorias" aria-expanded="false" aria-controls="collapseLayouts">
                                         <div className="sb-nav-link-icon">
                                             <i className="fas fa-briefcase-medical"></i>
                                         </div>
@@ -185,7 +187,7 @@ export default class Sidebar extends Component {
                                             <div className="nav-link" href="#">Buscar Comprobante por CI</div>
                                             <div className="nav-link" href="#">Listar Comprobantes de Pagos </div>
                                         </nav>
-                                    </div>
+                                    </div> */}
                                     
                                 </div>
                             </div>

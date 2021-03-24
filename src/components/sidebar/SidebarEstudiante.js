@@ -64,7 +64,7 @@ export default class SidebarEstudiante extends Component {
                                     
                                 </nav>
                             </div>
-                            <div className="nav-link collapsed puntero" href="#" data-toggle="collapse" data-target="#collapseDocentes" aria-expanded="false" aria-controls="collapseLayouts">
+                            {/* <div className="nav-link collapsed puntero" href="#" data-toggle="collapse" data-target="#collapseDocentes" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div className="sb-nav-link-icon">
                                     <i className="fas fa-graduation-cap"></i>                                        </div>
                                 HORARIO
@@ -95,7 +95,7 @@ export default class SidebarEstudiante extends Component {
                                     <div className="nav-link" href="#">Ver mis calificaciones</div>
                                    
                                 </nav>
-                            </div>
+                            </div> */}
 
                             {/* <div className="nav-link collapsed puntero" href="#" data-toggle="collapse" data-target="#collapseInscripcion" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div className="sb-nav-link-icon">
@@ -135,20 +135,25 @@ export default class SidebarEstudiante extends Component {
                                 <div className="sb-nav-link-icon">
                                 <i className="fas fa-dollar-sign"></i>
                                 </div>
-                                PAGOS
+                                PENSIONES
                                 <div className="sb-sidenav-collapse-arrow">
                                     <i className="fas fa-angle-down"></i>
                                 </div>
                             </div>
                             <div className="collapse" id="collapsePagos" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav className="sb-sidenav-menu-nested nav">
-                                    <div className="nav-link" href="#">Agregar Pagos</div>
-                                    <div className="nav-link" href="#">Estado de mis pagos</div>
+                                    <Link to="/estudiante/EstudianteAgregarPago">
+                                        <div className="nav-link" href="#">Agregar Pagos Pensión</div>
+                                    </Link>
+                                    <Link to="/estudiante/EstadoMisPagosPension">
+                                        <div className="nav-link" href="#">Estado de mis pagos de Pensión</div>
+
+                                    </Link>
                                     
                                 </nav>
                             </div>
 
-                            <div className="nav-link collapsed puntero" href="#" data-toggle="collapse" data-target="#collapseHistorias" aria-expanded="false" aria-controls="collapseLayouts">
+                            {/* <div className="nav-link collapsed puntero" href="#" data-toggle="collapse" data-target="#collapseHistorias" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div className="sb-nav-link-icon">
                                     <i className="fas fa-briefcase-medical"></i>
                                 </div>
@@ -162,7 +167,7 @@ export default class SidebarEstudiante extends Component {
                                     <div className="nav-link" href="#">Buscar Comprobante por CI</div>
                                     <div className="nav-link" href="#">Listar Comprobantes de Pagos </div>
                                 </nav>
-                            </div>
+                            </div> */}
                             
                         </div>
                     </div>

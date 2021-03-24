@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { Button, Form, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import Cookies from 'universal-cookie';
 import { ApiUrl } from '../../services/ApiRest';
 
@@ -9,6 +10,7 @@ const cookie= new Cookies();
 const idEstudiante = cookie.get("idEstudiante");    //declaramos una variable para usar la cookie del login
 const verMatriculasUrl= ApiUrl+ "matriculas-estudiante?estudiante_id="; //pasar id del estudiante
 const urlCarrera= ApiUrl+ "carreras/"; //pasar id del estudiante
+const ultimaMatricula = ApiUrl + "matricula-estudiante?estudiante_id="
 export default class VerMisMatriculas extends Component {
 
 
@@ -16,7 +18,14 @@ export default class VerMisMatriculas extends Component {
 		super(props)
 
 		this.state = {
-			matriculas: ""
+			matriculas: "",
+            abierto: false,
+            cantidadDepositada:"",
+            comprobante:"",
+            idMatricula:"",
+            pagoId:"1"
+
+
 			
 		}
     }
@@ -26,18 +35,108 @@ export default class VerMisMatriculas extends Component {
         .then(res => {
             const matriculas = res.data;
            // this.setState({matriculas:this.state.matriculas})
-          console.log(matriculas);
+         // console.log(matriculas);
        })
 
        axios.get(verMatriculasUrl +idEstudiante   )
           .then(res => {
             const matriculas = res.data[0];
             this.setState({ matriculas });
-            console.log(this.state.matriculas);
+           // console.log(this.state.matriculas);
+        })
+
+
+        //Ultima Matricula
+
+       axios.get(ultimaMatricula +idEstudiante   )
+          .then(res => {
+            const idMatricula = res.data[0].id_matricula;
+            this.setState({ idMatricula });
+            console.log("ultima matricula");
+            console.log(this.state.idMatricula);
+            
+
         })
 
 
     }
+
+    handleChange = async (e)=>{
+        await this.setState({ [e.target.name]: e.target.value })
+        //this.setState({estado:""});
+        console.log(this.state)
+    }
+
+    handleImage = async (e)=>{
+        await this.setState({comprobante: e.target.files})
+        // console.log( "Comprobante");
+         console.log( this.state);
+    }
+    
+
+    
+
+    abrirModal=(consola)=>{
+        this.setState({abierto: !this.state.abierto});
+        console.log("enviar datos");
+        console.log(consola.comprobante_pago);
+        this.setState({img: consola.comprobante_pago});
+    }
+
+
+    pagarMatricula = async (e)=>{
+        e.preventDefault();
+      
+        var fecha = new Date();
+        var dia=fecha.getDate();
+        var mes=fecha.getDay();
+        var anio=fecha.getFullYear();
+        const fechaMatricula= `${anio}-${mes}-${dia}`;
+
+
+        
+        console.log(this.state.idMatricula);
+        //console.log(this.state.comprobante[0]);
+        console.log(this.state.cantidadDepositada);
+        console.log(fechaMatricula);
+        console.log(this.state.pagoId);
+
+    
+                
+                const f = new FormData();
+                f.append("matricula_id",this.state.idMatricula);
+                
+                f.append("url_comprobante",this.state.comprobante[0]);
+                //f.append("estudiante_id",cookie.get("idEstudiante"));
+                f.append("valor_cancelado",this.state.cantidadDepositada);
+                f.append("fecha_matricula",fechaMatricula);
+                f.append("pago_id",this.state.pagoId);
+               
+
+                const config = {     
+                    headers: { 'content-type': 'multipart/form-data' }
+                
+                }
+                console.log("yo envio");
+                console.log(f);
+
+                await axios
+                .post(ApiUrl+"pagos",f,config)
+                .then(response => {
+                    console.log(response)
+                    this.setState({estado:"Su matrícula ha sido enviada para revisión"});       
+                })
+                .catch(error => {
+                    console.log(error);
+                    this.setState({estado:"Error No se pudo conectar con el servidor"});    
+                })  
+
+      
+                  
+        
+    }
+
+
 
     render() {
         return (
@@ -97,6 +196,8 @@ export default class VerMisMatriculas extends Component {
                         <br/>
                         <div className="text-center">
                             
+                        {/* <Button color="secondary" onClick={this.abrirModal} disabled>Agregar Pago</Button> */}
+
                             <Link to="/estudiante">
                                 <button type="" className="btn  back-istmas "style={{margin:"5px", width:"170px"}}  ><b>Cancelar </b></button>
                             </Link>
@@ -107,6 +208,31 @@ export default class VerMisMatriculas extends Component {
                         
                 </div>
             </div>
+
+            <Modal isOpen={this.state.abierto} >
+                    <ModalHeader>
+                        COMPROBANTE DE PAGO
+                    </ModalHeader>
+                    
+                    <ModalBody>
+                        <Form>
+                            <FormGroup>
+                                <Label for="exampleEmail">Cantidad Depositada</Label>
+                                <Input type="number" name="cantidadDepositada" id="exampleEmail" onChange={this.handleChange} placeholder="$ 0.00" />
+                            </FormGroup>                
+                            <FormGroup>
+                                <Label for="exampleFile">Comprobante de Pago</Label>
+                                <Input type="file" name="comprobante" onChange={this.handleImage} id="exampleFile" />
+                                
+                            </FormGroup>
+                        </Form>
+                    </ModalBody>
+                    
+                    <ModalFooter>
+                    <Button onClick={this.pagarMatricula}>Submit</Button>
+                        <Button color="secondary" onClick={this.abrirModal}>Cerrar</Button>
+                    </ModalFooter>
+                </Modal>
                 
             </div>
         )
