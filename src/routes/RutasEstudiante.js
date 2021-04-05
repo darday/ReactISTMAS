@@ -17,6 +17,8 @@ import AgregarPagoMatricula from '../components/estudiante/matriculas/AgregarPag
 import EstadoMisPagosPension from '../components/estudiante/pagos/EstadoMisPagosPension'
 
 
+
+
 const cookie= new Cookies();
 const carreraEstudiante = cookie.get("carreraEstudiante");    //declaramos una variable para usar la cookie del login
 const idEstudiante = cookie.get("idEstudiante");    //declaramos una variable para usar la cookie del login
@@ -103,13 +105,13 @@ export default class RutasEstudiante extends Component {
         return (
             <>
                 <NavbarGeneral /> 
-                <div id="layoutSidenav" >
+                <div id="layoutSidenav"  style={{paddingTop:"8.5vh"}}>
                     <SidebarEstudiante />
                     <div id="layoutSidenav_content">
                         <main>
                             <div className="container-fluid">                       
                                 {/* <Contenido />  */}
-                                <div className="animate__animated animate__fadeIn">
+                                <div className="animate__animated animate__fadeIn" style={{}}>
                                     <h5 className="mt-4 "><b>Carrera de { carreraEstudiante}</b></h5>
                                 </div>   
                                     <Route  path="/estudiante/EstudianteMatricula"  component={Matricularme} />                         

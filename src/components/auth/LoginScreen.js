@@ -9,8 +9,13 @@ import { Redirect } from 'react-router-dom';
 import "../services/ApiRest";
 import { ApiUrl } from '../services/ApiRest';
 
+import { toast } from 'react-toastify'
+  import 'react-toastify/dist/ReactToastify.css';
+
+
 const baseUrl=ApiUrl+"auth";
 const cookies = new Cookies();
+
 
 
 
@@ -30,7 +35,11 @@ export default class LoginScreen extends Component {
         };
     
         this.handleChange = this.handleChange.bind(this);
+        
+      
     }
+
+
 
     handleChange = async(e)=> {
         await this.setState({[e.target.name]: e.target.value});
@@ -57,8 +66,11 @@ export default class LoginScreen extends Component {
         }).then(response =>{
              //console.log(response);
             if(response.success == true){
+                toast("Iniciando Sesión", {position: toast.POSITION.TOP_LEFT});
+
                 var logeado = this.state.islogged;
                 var rol = this.state.rol;
+
                 
                 //declaracion de Cookies que van a ser usadas en todo momento
                 cookies.set('log',logeado,{path:"/"})
@@ -82,7 +94,6 @@ export default class LoginScreen extends Component {
                             //console.log(cookies.get('token'));
                             cookies.set('idEstudiante',response.estudiante_id,{path:"/"})
                             cookies.set('carreraEstudiante',response.descripcion_carrera,{path:"/"})
-
                             window.location.href="/estudiante";
                         }
                     }
@@ -91,6 +102,7 @@ export default class LoginScreen extends Component {
             }else{
               console.log("no llega") ;
               this.setState({error:"No se ha encontrado el usuario verifique los datos"});
+              //toast.error("No se ha encontrado el usuario verifique los datos", {position: toast.POSITION.TOP_CENTER});
 
 
             }
@@ -98,6 +110,7 @@ export default class LoginScreen extends Component {
         .catch(error=>{
            // console.log ("es igual a 0");
             this.setState({error:"No se ha encontrado el usuario verifique los datos"});
+
         });
     }
 
@@ -122,13 +135,13 @@ export default class LoginScreen extends Component {
 
         return (
             
-            <div>
+            <div className="colorb">
                 <NavbarLog />
-                    <div className="container" style={{width:"75%"}}>
+                    <div className="container" style={{width:"85%",height:"100vh"}}>
                         <div className="row ">
 
                             <div className= "formulario   col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 color-istmas">
-                                <div className="card shadow p-3 mb-5 bg-white rounded">
+                                <div className="card shadow p-3 mb-5 bg-white rounded animate__animated animate__fadeInLeft">
                                     <div className="card-header">
                                         <h4>Inicio de Sesión</h4>
                                     </div>
@@ -158,11 +171,11 @@ export default class LoginScreen extends Component {
                                 </div>                                                          
                             </div>
 
-                            <div className=" col col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+                            {/* <div className=" col col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
                                 <div className="">
                                     <img src={"./assets/img/presencial.jpg"}  className="img-login" width="100%" height="auto" />
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         
                     </div>

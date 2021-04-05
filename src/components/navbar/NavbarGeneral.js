@@ -31,7 +31,7 @@ export default class NavbarGeneral extends Component {
         
         return (
             
-                <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark ">
+                <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark "  style={{position:"fixed", width:"100%"}}>
                     <div className="navbar-brand" > ISTMAS</div>
                     <button className="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i className="fas fa-bars"></i></button>
                     {/* <!-- Navbar Search--> */}

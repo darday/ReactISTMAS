@@ -74,7 +74,7 @@ export default class EditarPerfilAdministrativo extends Component {
 
 
                 <div className="card shadow p-3 mb-5 bg-white rounded">
-                    <div className="card-header">
+                    <div className="card-header back-istmas">
                         <i className="fas fa-hospital-user"></i>       
                             <b>-Editar Perfil Administrativo </b>
                     </div>
@@ -82,13 +82,13 @@ export default class EditarPerfilAdministrativo extends Component {
                            
                         <form className="" onSubmit={this.editarAdministrativo} style={{padding:10}} id="create-course-form" >                    
                             <div className="row ">                                        
-                                <div className="col-12 col-sm-12 col-lg-5 col-xl-5 centrar" >
+                                <div className="col-12 col-sm-6 col-lg-5 col-xl-5 centrar" >
                                     <div className="mb-3">
                                         <label  className="form-label">Nombres Completos:</label>
                                         <input type="text" name="firstName"  onChange={this.handleChange} value={this.state.firstName}  className="form-control"  placeholder="Nombres" required/>
                                     </div>
                                 </div>  
-                                <div className="col-12 col-sm-12  col-lg-5 col-xl-5 centrar" >
+                                <div className="col-12 col-sm-6  col-lg-5 col-xl-5 centrar" >
                                     <div className="mb-3">
                                         <label  className="form-label">Apellidos Completos:</label>
                                         <input type="text" name="lastName"  onChange={this.handleChange} value={this.state.lastName}  className="form-control"  placeholder="Apellidos" required/>
@@ -98,13 +98,13 @@ export default class EditarPerfilAdministrativo extends Component {
 
                             <div className="row">
                                 
-                                <div className="col-12 col-sm-12 col-lg-5 col-xl-5 centrar" >
+                                <div className="col-12 col-sm-6 col-lg-5 col-xl-5 centrar" >
                                     <div className="mb-3">
                                         <label  className="form-label">Cédula de Identidad:</label>
                                         <input type="text" name="ci"  onChange={this.handleChange} value={this.state.ci} maxLength="10" className="form-control"  placeholder="CI" required/>
                                     </div>
                                 </div>  
-                                <div className="col-12 col-sm-12  col-lg-5 col-xl-5 centrar" >
+                                <div className="col-12 col-sm-6  col-lg-5 col-xl-5 centrar" >
                                     <div className="mb-3">
                                         <label  className="form-label">Fecha de Nacimiento:</label>
                                         <input type="date" name="fechaNaci"  onChange={this.handleChange} value={this.state.fechaNaci} className="form-control"  placeholder="Apellidos" required/>
@@ -114,13 +114,13 @@ export default class EditarPerfilAdministrativo extends Component {
 
                         
                             <div className="row">
-                                <div className="col-12 col-lg-5 col-xl-5 centrar" >
+                                <div className="col-12 col-sm-6 col-lg-5 col-xl-5 centrar" >
                                     <div className="mb-3">
                                         <label  className="form-label">Correo Electrónico:</label>
                                         <input type="email" name="email"  onChange={this.handleChange} value={this.state.email} className="form-control" placeholder="Email" required/>
                                     </div>
                                 </div>  
-                                <div className="col-12 col-sm-12  col-lg-5 col-xl-5 centrar" >
+                                <div className="col-12 col-sm-6   col-lg-5 col-xl-5 centrar" >
                                     <div className="mb-3">
                                         <label  className="form-label">Teléfono Celular:</label>
                                         <input type="number" name="telfCelular"  onChange={this.handleChange} value={this.state.telfCelular} className="form-control"  placeholder="Teléfono Celular" required/>
@@ -129,7 +129,7 @@ export default class EditarPerfilAdministrativo extends Component {
                             </div>    
 
                             <div className="row">
-                                <div className="col-12 col-lg-5 col-xl-5 centrar" >
+                                <div className="col-12 col-sm-6 col-lg-5 col-xl-5 centrar" >
                                     <div className="mb-3">
                                         <label  className="form-label">Contraseña:</label>
                                         <input type="password" name="password" id="password"  onChange={this.handleChange}   className="form-control" placeholder="Password"   required />
@@ -138,7 +138,7 @@ export default class EditarPerfilAdministrativo extends Component {
 
                                     </div>
                                 </div>  
-                                <div className="col-12 col-lg-5 col-xl-5 centrar" >
+                                <div className="col-12 col-sm-6 col-lg-5 col-xl-5 centrar" >
                                     <div className="mb-3">
                                         <label  className="form-label">Confirmar Contraseña:</label>
                                         <input type="password" name="passwordConfirm" id="passwordConfirm" onChange={this.handleChange} className="form-control" placeholder="Password"   required />
@@ -147,7 +147,7 @@ export default class EditarPerfilAdministrativo extends Component {
                             </div>  
 
                             <div className="row">
-                                <div className="col-12 col-lg-5 col-xl-5 centrar" >
+                                <div className="col-12 col-sm-6 col-lg-5 col-xl-5 centrar" >
                                     <div className="mb-3">
                                         <label  className="form-label">Dirección:</label>
                                         <input type="text" name="direccion" id="password"  onChange={this.handleChange}   value={this.state.direccion}  className="form-control" placeholder="Dirección"   required />
@@ -155,7 +155,7 @@ export default class EditarPerfilAdministrativo extends Component {
 
                                     </div>
                                 </div>  
-                                <div className="col-12 col-lg-5 col-xl-5 centrar" >
+                                <div className="col-12 col-sm-6 col-lg-5 col-xl-5 centrar" >
                                     <div className="mb-3">
                                         <label  className="form-label">Teléfono Convencional:</label>
                                         <input type="text" name="telfConvencional" id=""  onChange={this.handleChange}  value={this.state.telfConvencional} className="form-control" placeholder="Teléfono Convencional"   required />

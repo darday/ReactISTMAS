@@ -5,6 +5,9 @@ import Cookies from 'universal-cookie';
 import "../../services/ApiRest"
 import { ApiUrl } from '../../services/ApiRest';
 
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+
 const cookies= new Cookies();
 const urlActualizar=ApiUrl+"estudiantes/";
 const urlEstudiante= ApiUrl+ "estudiantes/"; //pasar id del estudiante
@@ -77,22 +80,30 @@ export default class EditarPerfil extends Component {
 
                 if(response.data.success === true){
                     this.setState({estado: response.data.message});
+                    
                     e.target.reset(); //resetea valores del formulario
                     this.setState({estado:"Datos Actualizados Correctamente"});
-
+                    toast.success("Datos Actualizados Correctamente!", {position: toast.POSITION.BOTTOM_CENTER});
+                    
+                    
                 }else{
                     this.setState({estado: response.data.message});
+                    toast.warning(this.state.estado, {position: toast.POSITION.BOTTOM_CENTER});
                 }
 			})
 			.catch(error => {
-                console.log(error);
+                //console.log(error);
                 this.setState({estado:"Error No se pudo conectar con el servidor"});
+                toast.error("Error No se pudo conectar con el servidor", {position: toast.POSITION.BOTTOM_CENTER});
+
 
             })
 
         }else{
             this.setState({estado:"Las contraseñas no coinciden"});
             console.log("contraseña no coincide")      ;
+            toast.error("Las contraseñas no coinciden", {position: toast.POSITION.BOTTOM_CENTER});
+
         }
     }
 
@@ -152,17 +163,13 @@ export default class EditarPerfil extends Component {
 
 
                 <div className="card shadow p-3 mb-5 bg-white rounded">
-                    <div className="card-header">
+                    <div className="card-header back-istmas">
                         <i className="fas fa-graduation-cap"></i>
                             <b>-Editar Mi Perfil </b>
                     </div>
                     <div className="card-body">
 
                         <form className="" onSubmit={this.actualizarEstudiante} style={{padding:10}} id="create-course-form" >
-
-
-
-
                             <div className="row ">
                                 <div className="col-12 col-sm-12 col-lg-5 col-xl-5 centrar" >
                                     <div className="mb-3">

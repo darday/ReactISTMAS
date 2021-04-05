@@ -5,6 +5,7 @@ import { Redirect, Route, Switch } from 'react-router-dom'
 import Cookies from 'universal-cookie'
 import AgregarDocente from '../components/administrador/docentes/AgregarDocente'
 import { ListarDocentes } from '../components/administrador/docentes/ListarDocentes'
+import { HomeAdmin } from '../components/administrador/home/HomeAdmin';
 import InscribirEstudiantes from '../components/administrador/inscripción/InscribirEstudiantes'
 import ListarEstudiantesInscritos from '../components/administrador/inscripción/ListarEstudiantesInscritos'
 import ListarSolicitudMatricula from '../components/administrador/matriculas/ListarSolicitudMatricula'
@@ -12,7 +13,7 @@ import ListarPagos from '../components/administrador/pagos/ListarPagos';
 import EditarPerfilAdministrativo from '../components/administrador/perfil/EditarPerfilAdministrativo'
 import PerfilAdministrativo from '../components/administrador/perfil/PerfilAdministrativo'
 import AgregarPersAdmin from '../components/administrador/personalAdmin/AgregarPersAdmin'
-import ListarPersonalAdministrativo from '../components/administrador/personalAdmin/ListarPersonalAdministrativo'
+import { ListarPersonalAdministrativo } from '../components/administrador/personalAdmin/ListarPersonalAdministrativo';
 import VerInfoAdministrativo from '../components/administrador/personalAdmin/VerInfoAdministrativo';
 import Contenido from '../components/contenido/Contenido'
 import FooterDashboard from '../components/footer/FooterDashboard'
@@ -63,12 +64,15 @@ export default class RutasAdministrativo extends Component {
             
             <>
                 <NavbarGeneral /> 
-                <div id="layoutSidenav" >
+                <div id="layoutSidenav" style={{paddingTop:"8.5vh"}} >
                     <Sidebar />
                     <div id="layoutSidenav_content">
                         <main>
                             <div className="container-fluid">                       
                                 <Contenido /> 
+    
+                                    <Route  path="/administrativo/HomeAdmin"  component={HomeAdmin} />                         
+
                                     {/* Perfil */}
                                     <Route  path="/administrativo/PerfilAdministrativo"  component={PerfilAdministrativo} />                         
                                     <Route  path="/administrativo/EditarPerfilAdministrativo"  component={EditarPerfilAdministrativo} />                         

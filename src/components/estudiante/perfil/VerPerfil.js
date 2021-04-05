@@ -46,8 +46,8 @@ export default class VerPerfil extends Component {
             </ol>
 
 
-            <div className="card shadow p-3 mb-5 bg-white rounded">
-                <div className="card-header">
+            <div className="card shadow p-3 mb-5 bg-white rounded ">
+                <div className="card-header back-istmas">
                 <i className="far fa-user"></i>
                         <b>-Perfil Estudiante </b>
                 </div>

@@ -8,7 +8,12 @@ import '../../services/ApiRest'
 
 import { ApiUrl } from '../../services/ApiRest'
 
-
+console.log("Cambiando");
+        const script = document.createElement("script");
+        script.src = `/assets/demo/datatable-destroy.js`;
+        script.async = true;
+        document.body.appendChild(script); 
+        
 export default class ListarSolicitudMatricula extends Component {
     constructor (props){
         super(props)
@@ -19,12 +24,17 @@ export default class ListarSolicitudMatricula extends Component {
             paralelos:[],
             idCiclo:"",
             abierto: false,
-            img:"" 
+            img:"" ,
+            mostrarTable:1,
+            mostrarMensaje:1,
         }
     }
 
     componentDidMount(){
-       
+       //destruye la tabla para des´pues cponstruirla de nuevo
+        
+
+
         //obtener carreras
         axios.get(ApiUrl+"carreras")
         .then(respuesta=>{
@@ -43,23 +53,39 @@ export default class ListarSolicitudMatricula extends Component {
        
     }
 
-    handleChange = async(e) =>{
+    handleChange = async(e) =>{        
         e.preventDefault();
+        this.setState({mostrarTable:1})
+
+        console.log("Cambiando");
+        const script = document.createElement("script");
+        script.src = `/assets/demo/datatable-destroy.js`;
+        script.async = true;
+        document.body.appendChild(script); 
         await this.setState({[e.target.name]: e.target.value});
-       // var ciclos = this.state.ciclos;
-        console.log(this.state);
-         //obtener matrículas
-         axios.get(ApiUrl+"matriculas?carrera_id="+this.state.idCarrera+"&ciclo_academico_id="+this.state.idCiclo)
-         .then(respuesta=>{
-             const matric = respuesta.data;
+        //obtener matrículas
+        axios.get(ApiUrl+"matriculas?carrera_id="+this.state.idCarrera+"&ciclo_academico_id="+this.state.idCiclo)
+        .then(respuesta=>{
+            const matric = respuesta.data;
+            if(respuesta.data.length !== 0){
+                const script = document.createElement("script");
+                script.src = `/assets/demo/datatables-demo.js`;
+                script.async = true;
+                document.body.appendChild(script); 
+                this.setState({mostrarTable:0})
+            }
              this.setState({matriculas:matric})
              console.log(this.state.matriculas);
          })
     }
 
-    aprobarMatricula(consola){
-       
-        
+    aprobarMatricula(consola){   
+         //Destruir la tabla para crear una nueva con lo9s datos
+        // const script1 = document.createElement("script");
+        // script1.src = `/assets/demo/datatable-destroy.js`;
+        // script1.async = true;
+        // document.body.appendChild(script1); 
+
         axios.put(ApiUrl+"matriculas/"+consola.id_matricula)
         .then(respuesta=>{
             const res = respuesta.data;
@@ -70,17 +96,41 @@ export default class ListarSolicitudMatricula extends Component {
                 const matric = respuesta.data;
                 this.setState({matriculas:matric})
                 console.log(this.state.matriculas);
-            })
-        })
+                // const script = document.createElement("script");
+                // script.src = `/assets/demo/datatables-demo.js`;
+                // script.async = true;
+                // document.body.appendChild(script);
 
-       
-        
+                
+            })
+        })       
 
     } 
 
-    rechazarMatricula(consola){
-       
+    refrescarDataTable(){
+         //     Destruir la tabla para crear una nueva con lo9s datos
+        const script1 = document.createElement("script");
+        script1.src = `/assets/demo/datatable-destroy.js`;
+        script1.async = true;
+        document.body.appendChild(script1);    
+
+        const script = document.createElement("script");
+        script.src = `/assets/demo/datatables-demo.js`;
+        script.async = true;
+        document.body.appendChild(script);
+
+
+    }
+
+    rechazarMatricula(consola){      
         
+          //Destruir la tabla para crear una nueva con lo9s datos
+        //   const script1 = document.createElement("script");
+        //   script1.src = `/assets/demo/datatable-destroy.js`;
+        //   script1.async = true;
+        //   document.body.appendChild(script1); 
+
+
         axios.put(ApiUrl+"rechazar/"+consola.id_matricula)
         .then(respuesta=>{
             const res = respuesta.data;
@@ -90,40 +140,43 @@ export default class ListarSolicitudMatricula extends Component {
             .then(respuesta=>{
                 const matric = respuesta.data;
                 this.setState({matriculas:matric})
-                console.log(this.state.matriculas);
+                // console.log(this.state.matriculas);
+                // const script = document.createElement("script");
+                // script.src = `/assets/demo/datatables-demo.js`;
+                // script.async = true;
+                // document.body.appendChild(script);
+                // console.log(this.state.matriculas);
+
+                
             })
         })
         
 
     } 
 
-    mostrarComprobante(consola){
-        
-    }
-
     abrirModal=(consola)=>{
         this.setState({abierto: !this.state.abierto});
         console.log("enviar datos");
         console.log(consola.comprobante_pago);
         this.setState({img: consola.comprobante_pago});
-    }
-
-
-    
+    }  
 
     render() {
         return (
-
             <div className=" row animate__animated animate__fadeIn">
-                <div className="card text-center">
-                    <div className="card-header">
-                        <h5><b>FILTRAR DATOS</b></h5>
+                 <ol className="breadcrumb mb-4">
+                                <li className="breadcrumb-item active">{this.state.estado}</li>
+                </ol>
+                <div className="card ">
+                    <div className="card-header back-istmas ">
+                        {/* <h5><b>FILTRAR DATOS</b></h5> */}
+                        <b>-Listar Solicitud de Matriculas </b>
                     </div>
                     <div className="card-body">
                         <div className="row" >
                             <div className="mb-3 col-12 col-sm-12 col-lg-4 col-xl-4 centrar">
                                 <label  className="form-label">Seleccione una carrera</label>
-                                    <select className="form-select" name="idCarrera" onChange={this.handleChange} aria-label="Default select example">
+                                    <select className="form-select" name="idCarrera"  onChange={this.handleChange} aria-label="Default select example">
                                         <option value="undefined">Seleccione una carrera</option>                                 
                                         
                                             { this.state.carreras.map(person => <option key={person.id_carrera} value={person.id_carrera} > { person.descripcion_carrera}</option>)}
@@ -154,77 +207,54 @@ export default class ListarSolicitudMatricula extends Component {
                 </div>
 
 
-                <div className="card mb-4 " style={{marginTop:"20px"}}>
+                <div className="card mb-4 animate__animated animate__fadeIn " style={{marginTop:"20px"}}  hidden={this.state.mostrarTable}>
                     <div className="card-header ">
-                        <div className="row">
-                            
-                           
-                            <div className="col-12 col-sm-12 col-lg-12 col-xl-12 ">
-                                <form className="d-md-inline-block  ">
-                                    <div className="input-group">
-                                    
-                                        <div className="input-group text-right">
-                                            <label style={{margin:"5px"}}><b>Buscar : </b> </label>
+                        <button type="button" className="btn btn-outline-secondary" onClick={this.refrescarDataTable}><i className="fas fa-sync-alt"></i>Preparar Página Para Exportación</button>
 
-                                            <input className="form-control" type="text" placeholder="Cédula de Identidad..." aria-label="Search" aria-describedby="basic-addon2" />
-                                            <div className="input-group-append">
-                                                <button className="btn btn-primary" type="button"><i className="fas fa-search"></i></button>
-                                            </div>
-                                        </div>
-                                       
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                     
-                        
-                           
-                        
-                       
                     </div>
-                    <div className="card-body">
+                    <div className="card-body ">
                         <div className="table-responsive">
-                            <table className="table table-bordered"   width="100%" >
+                            <table className="table table-bordered contenidoTabla"  id="dataTableListarMatriculas" width="100%"   >
                                 <thead>
                                     <tr>
                                         <th>ID</th>
                                         <th>Estudiante</th>
-                                        <th>Fecha de Solicitud</th>
                                         <th>Ciclo</th>
-                                        <th>Valor Cancelado</th>
+                                        <th>Fecha de Solicitud</th>
+                                        <th >Valor Cancelado</th>
                                         <th>Valor Pendiente</th>
-                                        <th>Comprobante de Pago</th>
+                                        <th>Comprobante</th>
                                         <th>Matricula</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
                                
                                 <tbody>
-                                    {this.state.matriculas.map(consola=>(                                        
+                                    {this.state.matriculas.map((consola,index)=>(                                        
                                         <tr key={consola.id_matricula}>
-                                            <td>{consola.id_matricula}</td>
+                                            <td>{index+1}</td>
                                             <td>{consola.apellidos_estudiante+" "+ consola.nombres_estudiante}</td>
-                                            <td>{consola.fecha_matricula}</td>
                                             <td>{consola.descripcion_ciclo_academico}</td>
+                                            <td>{consola.fecha_matricula}</td>
                                             <td>{consola.valor_cancelado}</td>
                                             <td>{consola.valor_pendiente}</td>
                                             <td style={{textAlign:"center"}}>
                                                                                               
                                                 <button className="btn btn-outline-info" onClick={()=> this.abrirModal(consola)}  > 
-                                                    <i className="far fa-eye"></i>
+                                                    <i className="far fa-eye " ></i>
                                                 </button>
                                                 
                                             </td>
-
                                             <td>{consola.descripcion_estado_matricula}</td>
+
                                             <td style={{textAlign:"center"}}>
                                                 {/* */}
-                                                <button className="btn btn-outline-success"  onClick={()=> this.aprobarMatricula(consola)} > 
+                                                <button className="btn btn-outline-success "  onClick={()=> this.aprobarMatricula(consola)} > 
                                                     <i className="puntero fas fa-user-check"  ></i>
                                                 </button>
                                                 
                                                
-                                                    <button className="btn btn-outline-danger"  onClick={()=> this.rechazarMatricula(consola)}  > 
+                                                    <button className="btn btn-outline-danger "  onClick={()=> this.rechazarMatricula(consola)}  > 
                                                         <i className=" puntero fas fa-user-times" ></i>   
                                                     </button>
                                                 

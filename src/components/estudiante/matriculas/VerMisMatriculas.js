@@ -23,7 +23,9 @@ export default class VerMisMatriculas extends Component {
             cantidadDepositada:"",
             comprobante:"",
             idMatricula:"",
-            pagoId:"1"
+            pagoId:"1",
+            mostrar:"1",
+            noHayDatos:"No hay datos"
 
 
 			
@@ -31,22 +33,21 @@ export default class VerMisMatriculas extends Component {
     }
     
     componentDidMount(){
-        axios.get(verMatriculasUrl +idEstudiante  )
-        .then(res => {
-            const matriculas = res.data;
-           // this.setState({matriculas:this.state.matriculas})
-         // console.log(matriculas);
-       })
-
+      
        axios.get(verMatriculasUrl +idEstudiante   )
           .then(res => {
             const matriculas = res.data[0];
-            this.setState({ matriculas });
-           // console.log(this.state.matriculas);
+            if(matriculas == undefined){
+                console.log("no hay datos")
+                this.setState({mostrar:"0"});
+                
+            }else{
+                this.setState({ matriculas });
+            }
+            //console.log(matriculas);
         })
 
-
-        //Ultima Matricula
+       // Ultima Matricula
 
        axios.get(ultimaMatricula +idEstudiante   )
           .then(res => {
@@ -157,28 +158,33 @@ export default class VerMisMatriculas extends Component {
                                         MATRICULAS
                                     </div>
                                     <div className="card-body centrar " style={{width:"100%"}}>
-                                        <table className="table  text-left">
-                                            <thead >
-                                                <tr>
-                                                <th scope="col">ID</th>
-                                                <th scope="col">Estado de Maatricula</th>
-                                                <th scope="col">Valor Cancelado</th>
-                                                <th scope="col">Valor Pendiente</th>
+                                        <div className="table-responsive">  
+                                            <table className="table  text-left">
+                                                <thead >
+                                                    <tr>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Estado de Maatricula</th>
+                                                    <th scope="col">Valor Cancelado</th>
+                                                    <th scope="col">Valor Pendiente</th>
+                                                    
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                                                    
+                                                    <tr >
+                                                        <td>{(this.state.mostrar === "0")? this.state.noHayDatos : this.state.matriculas.id_matricula}</td>                                                   
+                                                        <td>{(this.state.mostrar === "0")? this.state.noHayDatos : this.state.matriculas.descripcion_estado_matricula}</td>                                                   
+                                                        <td>{(this.state.mostrar === "0")? this.state.noHayDatos : this.state.matriculas.valor_cancelado}</td>                                                   
+                                                        <td>{(this.state.mostrar === "0")? this.state.noHayDatos : this.state.matriculas.valor_pendiente}</td>                                                   
+                                                        {/*<td>{this.state.matriculas.descripcion_estado_matricula}</td>                                                   
+                                                        <td>{this.state.matriculas.valor_cancelado}</td>                                                   
+                                                        <td>{this.state.matriculas.valor_pendiente}</td>                                                    */}
+                                                                                            
+                                                    </tr>
                                                 
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                                                 
-                                                <tr >
-                                                    <td>{this.state.matriculas.id_matricula}</td>                                                   
-                                                    <td>{this.state.matriculas.descripcion_estado_matricula}</td>                                                   
-                                                    <td>{this.state.matriculas.valor_cancelado}</td>                                                   
-                                                    <td>{this.state.matriculas.valor_pendiente}</td>                                                   
-                                                                                        
-                                                </tr>
-                                            
-                                            </tbody>
-                                        </table>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                         
                                     </div>
                                    

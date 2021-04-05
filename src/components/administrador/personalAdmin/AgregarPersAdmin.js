@@ -99,7 +99,7 @@ export default class AgregarPersAdmin extends Component {
 
 
                 <div className="card shadow p-3 mb-5 bg-white rounded">
-                    <div className="card-header">
+                    <div className="card-header back-istmas">
                         <i className="fas fa-hospital-user"></i>       
                             <b>-Agregar Administrativo </b>
                     </div>
@@ -107,13 +107,13 @@ export default class AgregarPersAdmin extends Component {
                            
                         <form className="" onSubmit={this.agregarAdministrativo} style={{padding:10}} id="create-course-form" >                    
                             <div className="row ">                                        
-                                <div className="col-12 col-sm-12 col-lg-5 col-xl-5 centrar" >
+                                <div className="col-12 col-sm-6 col-lg-5 col-xl-5 centrar" >
                                     <div className="mb-3">
                                         <label  className="form-label">Nombres Completos:</label>
                                         <input type="text" name="firstName"  onChange={this.handleChange} className="form-control"  placeholder="Nombres" required/>
                                     </div>
                                 </div>  
-                                <div className="col-12 col-sm-12  col-lg-5 col-xl-5 centrar" >
+                                <div className="col-12 col-sm-6  col-lg-5 col-xl-5 centrar" >
                                     <div className="mb-3">
                                         <label  className="form-label">Apellidos Completos:</label>
                                         <input type="text" name="lastName"  onChange={this.handleChange} className="form-control"  placeholder="Apellidos" required/>
@@ -123,13 +123,13 @@ export default class AgregarPersAdmin extends Component {
 
                             <div className="row">
                                 
-                                <div className="col-12 col-sm-12 col-lg-5 col-xl-5 centrar" >
+                                <div className="col-12 col-sm-6 col-lg-5 col-xl-5 centrar" >
                                     <div className="mb-3">
                                         <label  className="form-label">Cédula de Identidad:</label>
                                         <input type="text" name="ci"  onChange={this.handleChange} maxLength="10" className="form-control"  placeholder="CI" required/>
                                     </div>
                                 </div>  
-                                <div className="col-12 col-sm-12  col-lg-5 col-xl-5 centrar" >
+                                <div className="col-12 col-sm-6  col-lg-5 col-xl-5 centrar" >
                                     <div className="mb-3">
                                         <label  className="form-label">Fecha de Nacimiento:</label>
                                         <input type="date" name="fechaNaci"  onChange={this.handleChange} className="form-control"  placeholder="Apellidos" required/>
@@ -139,13 +139,13 @@ export default class AgregarPersAdmin extends Component {
 
                         
                             <div className="row">
-                                <div className="col-12 col-lg-5 col-xl-5 centrar" >
+                                <div className="col-12 col-sm-6 col-lg-5 col-xl-5 centrar" >
                                     <div className="mb-3">
                                         <label  className="form-label">Correo Electrónico:</label>
                                         <input type="email" name="email"  onChange={this.handleChange} className="form-control" placeholder="Email" required/>
                                     </div>
                                 </div>  
-                                <div className="col-12 col-sm-12  col-lg-5 col-xl-5 centrar" >
+                                <div className="col-12 col-sm-6  col-lg-5 col-xl-5 centrar" >
                                     <div className="mb-3">
                                         <label  className="form-label">Teléfono Celular:</label>
                                         <input type="number" name="telfCelular"  onChange={this.handleChange} className="form-control"  placeholder="Teléfono Celular" required/>
@@ -154,7 +154,7 @@ export default class AgregarPersAdmin extends Component {
                             </div>    
 
                             <div className="row">
-                                <div className="col-12 col-lg-5 col-xl-5 centrar" >
+                                <div className="col-12 col-sm-6 col-lg-5 col-xl-5 centrar" >
                                     <div className="mb-3">
                                         <label  className="form-label">Contraseña:</label>
                                         <input type="password" name="password" id="password"  onChange={this.handleChange}   className="form-control" placeholder="Password"   required />
@@ -163,7 +163,7 @@ export default class AgregarPersAdmin extends Component {
 
                                     </div>
                                 </div>  
-                                <div className="col-12 col-lg-5 col-xl-5 centrar" >
+                                <div className="col-12 col-sm-6 col-lg-5 col-xl-5 centrar" >
                                     <div className="mb-3">
                                         <label  className="form-label">Confirmar Contraseña:</label>
                                         <input type="password" name="passwordConfirm" id="passwordConfirm" onChange={this.handleChange} className="form-control" placeholder="Password"   required />
@@ -172,7 +172,7 @@ export default class AgregarPersAdmin extends Component {
                             </div>  
 
                             <div className="row">
-                                <div className="col-12 col-lg-5 col-xl-5 centrar" >
+                                <div className="col-12 col-sm-6 col-lg-5 col-xl-5 centrar" >
                                     <div className="mb-3">
                                         <label  className="form-label">Dirección:</label>
                                         <input type="text" name="direccion" id="password"  onChange={this.handleChange}   className="form-control" placeholder="Dirección"   required />
@@ -180,7 +180,7 @@ export default class AgregarPersAdmin extends Component {
 
                                     </div>
                                 </div>  
-                                <div className="col-12 col-lg-5 col-xl-5 centrar" >
+                                <div className="col-12 col-sm-6 col-lg-5 col-xl-5 centrar" >
                                     <div className="mb-3">
                                         <label  className="form-label">Teléfono Convencional:</label>
                                         <input type="text" name="telfConvencional" id=""  onChange={this.handleChange}   className="form-control" placeholder="Teléfono Convencional"   required />
@@ -190,9 +190,9 @@ export default class AgregarPersAdmin extends Component {
                             </div>  
 
                             <div className="text-center">
-                                <button type="submit" className="btn  back-istmas centrar" style={{margin:"5px"}}  > <b>Enviar Formulario</b></button>
+                                <button type="submit" className="btn  btn btn-outline-dark "  style={{margin:"5px", width:"180px"}} > <b>Enviar Formulario</b></button>
                                 <Link to="/login">
-                                    <button type="" className="btn  back-istmas centrar"style={{margin:"5px"}}  ><b>Cancelar Inscripción</b></button>
+                                    <button type="" className="btn  btn btn-outline-dark "  style={{margin:"5px", width:"180px"}}  ><b>Cancelar Inscripción</b></button>
                                 </Link>
                             
                             </div>

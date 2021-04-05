@@ -34,7 +34,7 @@ export default class Sidebar extends Component {
     render() {
         return (
             
-                    <div id="layoutSidenav_nav"  style={{width:226}}>
+                    <div id="layoutSidenav_nav"  style={{width:226, height:"auto"}}>
                         <nav className="sb-sidenav accordion sb-sidenav-dark animate__animated animate__fadeInLeft" id="sidenavAccordion">
                             <div className="sb-sidenav-menu">
                                 <div className="nav">

@@ -23,7 +23,7 @@ export default class AgregarPago extends Component {
 
        
         }
-        this.handleChange = this.handleChange.bind(this);
+      //  this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount(){
@@ -46,11 +46,11 @@ export default class AgregarPago extends Component {
         console.log("datos enviados");
     }
 
-    handleChange(){
+    /*handleChange(){
         await this.setState({ [e.target.name]: e.target.value})
 
 
-    }
+    }*/
     
     render() {
        
@@ -71,32 +71,34 @@ export default class AgregarPago extends Component {
                                         PAGOS
                                     </div>
                                     <div className="card-body centrar " style={{width:"100%"}}>
-                                        <table className="table  text-left">
-                                            <thead >
-                                                <tr>
-                                                <th scope="col">ID</th>
-                                                <th scope="col">Descripción</th>
-                                                <th scope="col">Fecha de Vencimiento</th>
-                                                <th scope="col">Acciones</th>
-                                                
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {console.log(this.state.listaPagos)}
-                                                {this.state.listaPagos.map(consola=>(                                        
-                                                <tr key={consola.id_pension}>
-                                                    <td>{consola.id_pension}</td>
-                                                    <td>{consola.descripcion_pension}</td>
-                                                    <td>{consola.fecha_vencimiento}</td>
-                                                    <td className="" style={{textAlign:"center"}}> 
-                                                        <button className="btn btn-outline-success" onClick={this.abrirModal} > 
-                                                            <i className="fas fa-plus-square"></i>
-                                                        </button>                                                                                     
-                                                    </td>  
-                                                </tr>
-                                                ))}                                               
-                                            </tbody>
-                                        </table>                                        
+                                        <div className="table-responsive">
+                                            <table className="table  text-left">
+                                                <thead >
+                                                    <tr>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Descripción</th>
+                                                    <th scope="col">Fecha de Vencimiento</th>
+                                                    <th scope="col">Acciones</th>
+                                                    
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {console.log(this.state.listaPagos)}
+                                                    {this.state.listaPagos.map(consola=>(                                        
+                                                    <tr key={consola.id_pension}>
+                                                        <td>{consola.id_pension}</td>
+                                                        <td>{consola.descripcion_pension}</td>
+                                                        <td>{consola.fecha_vencimiento}</td>
+                                                        <td className="" style={{textAlign:"center"}}> 
+                                                            <button className="btn btn-outline-success" onClick={this.abrirModal} > 
+                                                                <i className="fas fa-plus-square"></i>
+                                                            </button>                                                                                     
+                                                        </td>  
+                                                    </tr>
+                                                    ))}                                               
+                                                </tbody>
+                                            </table>                                        
+                                        </div>
                                     </div>                                
                                 </div>
                             </div>                              

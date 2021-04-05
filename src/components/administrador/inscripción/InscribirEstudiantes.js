@@ -115,7 +115,7 @@ export default class InscribirEstudiantes extends Component {
                 </div>
                 <div className="card-body">
                         <div className="row ">                                        
-                            <div className="col-12 col-sm-12 col-lg-5 col-xl-5 centrar" >
+                            <div className="col-12 col-sm-5 col-lg-5 col-xl-5 centrar" >
                                 <div className="mb-3">
                                     <label  className="form-label"><b>Carrera</b></label>
                                     <select className="form-select" name="idCarrera" value={this.state.value} onChange={this.handleChange} aria-label="Default select example">
@@ -128,7 +128,7 @@ export default class InscribirEstudiantes extends Component {
                                     </select>
                                 </div>
                             </div>  
-                            <div className="col-12 col-sm-12  col-lg-5 col-xl-5 centrar" >
+                            <div className="col-12 col-sm-5  col-lg-5 col-xl-5 centrar" >
                                 <div className="mb-3">
                                     
                                 </div>
@@ -140,13 +140,13 @@ export default class InscribirEstudiantes extends Component {
 
                        
                         <div className="row ">                                        
-                            <div className="col-12 col-sm-12 col-lg-5 col-xl-5 centrar" >
+                            <div className="col-12 col-sm-5 col-lg-5 col-xl-5 centrar" >
                                 <div className="mb-3">
                                     <label  className="form-label">Nombres Completos:</label>
                                     <input type="text" name="firstName"  onChange={this.handleChange} className="form-control"  placeholder="Nombres" required/>
                                 </div>
                             </div>  
-                            <div className="col-12 col-sm-12  col-lg-5 col-xl-5 centrar" >
+                            <div className="col-12 col-sm-5  col-lg-5 col-xl-5 centrar" >
                                 <div className="mb-3">
                                     <label  className="form-label">Apellidos Completos:</label>
                                     <input type="text" name="lastName"  onChange={this.handleChange} className="form-control"  placeholder="Apellidos" required/>
@@ -156,13 +156,13 @@ export default class InscribirEstudiantes extends Component {
 
                         <div className="row">
                             
-                            <div className="col-12 col-sm-12 col-lg-5 col-xl-5 centrar" >
+                            <div className="col-12 col-sm-5 col-lg-5 col-xl-5 centrar" >
                                 <div className="mb-3">
                                     <label  className="form-label">Cédula de Identidad:</label>
                                     <input type="text" name="ci"  onChange={this.handleChange} maxLength="10" className="form-control"  placeholder="CI" required/>
                                 </div>
                             </div>  
-                            <div className="col-12 col-sm-12  col-lg-5 col-xl-5 centrar" >
+                            <div className="col-12 col-sm-5  col-lg-5 col-xl-5 centrar" >
                                 <div className="mb-3">
                                     <label  className="form-label">Fecha de Nacimiento:</label>
                                     <input type="date" name="fechaNaci"  onChange={this.handleChange} className="form-control"  placeholder="Apellidos" required/>
@@ -172,13 +172,13 @@ export default class InscribirEstudiantes extends Component {
 
                     
                         <div className="row">
-                            <div className="col-12 col-lg-5 col-xl-5 centrar" >
+                            <div className="col-12 col-sm-5 col-lg-5 col-xl-5 centrar" >
                                 <div className="mb-3">
                                     <label  className="form-label">Correo Electrónico:</label>
                                     <input type="email" name="email"  onChange={this.handleChange} className="form-control" placeholder="Email" required/>
                                 </div>
                             </div>  
-                            <div className="col-12 col-sm-12  col-lg-5 col-xl-5 centrar" >
+                            <div className="col-12 col-sm-5  col-lg-5 col-xl-5 centrar" >
                                 <div className="mb-3">
                                     <label  className="form-label">Teléfono Celular:</label>
                                     <input type="number" name="telfCelular"  onChange={this.handleChange} className="form-control"  placeholder="Teléfono Celular" required/>
@@ -187,7 +187,7 @@ export default class InscribirEstudiantes extends Component {
                         </div>    
 
                         <div className="row">
-                            <div className="col-12 col-lg-5 col-xl-5 centrar" >
+                            <div className="col-12 col-sm-5 col-lg-5 col-xl-5 centrar" >
                                 <div className="mb-3">
                                     <label  className="form-label">Contraseña:</label>
                                     <input type="password" name="password" id="password"  onChange={this.handleChange}   className="form-control" placeholder="Password"   required />
@@ -196,7 +196,7 @@ export default class InscribirEstudiantes extends Component {
 
                                 </div>
                             </div>  
-                            <div className="col-12 col-lg-5 col-xl-5 centrar" >
+                            <div className="col-12 col-sm-5 col-lg-5 col-xl-5 centrar" >
                                 <div className="mb-3">
                                     <label  className="form-label">Confirmar Contraseña:</label>
                                     <input type="password" name="passwordConfirm" id="passwordConfirm" onChange={this.handleChange} className="form-control" placeholder="Password"   required />
@@ -207,14 +207,14 @@ export default class InscribirEstudiantes extends Component {
 
                         <div className="row">
                         
-                            <div className="col-12 col-lg-5 col-xl-5 centrar" >
+                            <div className="col-12 col-sm-5 col-lg-5 col-xl-5 centrar" >
                                 <div className="mb-3">
                                     <label  className="form-label">Dirección:</label>
                                     <input type="text" name="direccion" onChange={this.handleChange} className="form-control"  placeholder="Dirección"  required />
                                 </div>
                             </div>  
 
-                            <div className="col-12 col-sm-12  col-lg-5 col-xl-5 centrar" >
+                            <div className="col-12 col-sm-5 col-sm-5  col-lg-5 col-xl-5 centrar" >
                                 <div className="mb-3">
                                     <label  className="form-label">Teléfono Convencional:</label>
                                     <input type="number" name="telfConvencional"  onChange={this.handleChange} className="form-control"  placeholder="Teléfono Celular" required/>

@@ -42,10 +42,8 @@ export default class PerfilAdministrativo extends Component {
                 <ol className="breadcrumb mb-4">
                                 <li className="breadcrumb-item active">{this.state.estado}</li>
                 </ol>
-
-
                 <div className="card shadow p-3 mb-5 bg-white rounded">
-                    <div className="card-header">
+                    <div className="card-header back-istmas">
                     <i className="far fa-user"></i>
                             <b>-Perfil Administrativo </b>
                     </div>

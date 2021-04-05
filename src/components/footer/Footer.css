@@ -3,8 +3,10 @@
     left: 0;
     bottom: 0;
     width: 103%;
-    background-color: #718087;
-    color: white;
+    background-color: #71808759;
+    /* background-color: #f8f9fa; */
+    
+    color: black;
     text-align: center;
     padding-top:1%;
  

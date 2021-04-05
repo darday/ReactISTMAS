@@ -1,27 +1,14 @@
 .carrera-select{
-    padding-top: 15%;
+    padding-top: 30vh;
 }
 
-.img-carrera-screen{
-    padding-top: 15%;
+.img-login{
+    padding-top: 27vh;
+    padding-left: 3vw ;
+    
 }
 
-.claseDelDiv{
-    background-color: red;
-    /* background-image: url(${process.env.PUBLIC_URL + '/assets/img/presencial.jpg'}) */
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
-.Login-component {
-    /* The image used */
-    /* background-image: url(../../../public/assets/img/Presencial-Software.jpg); */
-
-    /* Full height */
-    height: 100%; 
-
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
+.colorb{
+    background-image: url(fondo.jpg);
     background-size: cover;
 }

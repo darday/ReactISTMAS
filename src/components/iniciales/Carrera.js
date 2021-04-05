@@ -8,6 +8,9 @@ import { ApiUrl } from '../services/ApiRest';
 import { Link } from 'react-router-dom';
 import { Button, FormGroup, Label, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+
 const cookies = new Cookies();
 const idCarrera= cookies.get("idCarrera");  //trae la cooki de carrerasScreen
 //console.log("carrera"+idCarrera);
@@ -124,15 +127,21 @@ export default class Carrera extends Component {
                     e.target.reset(); //resetea valores del formulario
                     this.setState({estado:"Datos Agregados Correctamente Inicie Sesión"});
                     this.setState({abierto: !this.state.abierto});
+                    toast.success("Datos Agregados Correctamente - Inicie Sesión", {position: toast.POSITION.BOTTOM_CENTER});
+
 
 
                 }else{
                     if( response.data.errors.numero_identificacion_estudiante){
                         this.setState({estado:"El usuario con el número de cédula ingresado ya existe"});
+                        toast.error("El usuario con el número de cédula ingresado ya existe", {position: toast.POSITION.BOTTOM_CENTER});
+
                     }
 
                     if( response.data.errors.email_estudiante){
                         this.setState({estado:"El correo electrónico ingresado ya existe en el sistema"});
+                        toast.error("El correo electrónico ingresado ya existe en el sistema!", {position: toast.POSITION.BOTTOM_CENTER});
+
                     }
 
                  
@@ -141,12 +150,17 @@ export default class Carrera extends Component {
 			.catch(error => {
                 console.log(error);
                 this.setState({estado:"Error No se pudo conectar con el servidor"});
+                toast.error("No se pudo conectar con el Servidor!", {position: toast.POSITION.BOTTOM_CENTER});
+
 
             })            
             
         }else{
             this.setState({estado:"Las contraseñas no coinciden"});     
             console.log("contraseña no coincide")      ;
+            toast.error("Las contraseñas no coinciden!", {position: toast.POSITION.BOTTOM_CENTER});
+
+
         }
     }	
     
@@ -250,9 +264,9 @@ export default class Carrera extends Component {
 
         return (
             
-            <div>
+            <div >
                 <NavbarLog/>
-                <div className="container">                    
+                <div className="container" style={{paddingTop:"10vh"}}>                    
                     <br/>
                     <h3 className="titulo-istmas text-center"><b>{this.state.carrera.descripcion_carrera}</b></h3>
                     <hr/>

@@ -1,9 +1,14 @@
 .formulario{
-    padding-top: 7Vh;
+    padding-top: 20Vh;
 }
 
 .img-login{
     padding-top: 9vh;
     padding-left: 3vw ;
     
+}
+
+.colorb{
+    background-image: url(fondo.jpg);
+    background-size: cover;
 }

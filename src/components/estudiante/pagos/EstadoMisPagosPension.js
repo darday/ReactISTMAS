@@ -67,33 +67,32 @@ export default class EstadoMisPagosPension extends Component {
                                         PAGOS DE PENSIONES
                                     </div>
                                     <div className="card-body centrar " style={{width:"100%"}}>
-                                        <table className="table  text-left">
-                                            <thead >
-                                                <tr>
-                                                <th scope="col">ID</th>
-                                                <th scope="col">Enstado Pensión</th>
-                                                <th scope="col">Cantidad Pensión</th>
-                                                <th scope="col">Fecha Pago Pensión</th>
-                                                <th scope="col">Acciones</th>
-                                                
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            {this.state.misPagos.map(consola=>(                                        
-                                        <tr key={consola.pension_id}>
-                                            <td>{consola.pension_id}</td>
-                                            <td>{consola.matricula_id}</td>
-                                            <td>{consola.fecha_pago_matricula}</td>
-                                            <td>{consola.cantidad_pension}</td>
-                                            <td>{consola.estado_pension}</td>
-                                            
-
-                                                                                       
-                                        </tr>
-                                    ))} 
-                                                                                             
-                                            </tbody>
-                                        </table>                                        
+                                        <div className="table-responsive">
+                                            <table className="table  text-left">
+                                                <thead >
+                                                    <tr>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Enstado Pensión</th>
+                                                    <th scope="col">Cantidad Pensión</th>
+                                                    <th scope="col">Fecha Pago Pensión</th>
+                                                    <th scope="col">Acciones</th>
+                                                    
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {this.state.misPagos.map(consola=>(                                        
+                                                    <tr key={consola.pension_id}>
+                                                        <td>{consola.pension_id}</td>
+                                                        <td>{consola.matricula_id}</td>
+                                                        <td>{consola.fecha_pago_matricula}</td>
+                                                        <td>{consola.cantidad_pension}</td>
+                                                        <td>{consola.estado_pension}</td>     
+                                                    </tr>
+                                                    ))} 
+                                                                                                
+                                                </tbody>
+                                            </table>                                        
+                                        </div>
                                     </div>                                
                                 </div>
                             </div>                              
