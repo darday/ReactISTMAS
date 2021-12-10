@@ -7,9 +7,9 @@
 $(function(){
   var table = $('#dataTable').DataTable(
     {
-      colReorder: true,
-      fixedHeader: true,
-      retrieve: true,
+      // colReorder: true,
+      // fixedHeader: true,
+       retrieve: true,
       dom: 'Bfrtip',
       lengthMenu: [
         [ 10, 25, 50, -1 ],

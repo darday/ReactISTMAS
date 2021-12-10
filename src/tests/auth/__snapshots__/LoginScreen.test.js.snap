@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en Login Screen (Auth) debe mostrar <LoginScreen Correctamente 1`] = `
+<div
+  className="colorb"
+>
+  <NavbarLog />
+  <div
+    className="container"
+    style={
+      Object {
+        "height": "100vh",
+        "width": "85%",
+      }
+    }
+  >
+    <div
+      className="row "
+    >
+      <div
+        className="formulario   col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 color-istmas"
+      >
+        <div
+          className="card shadow p-3 mb-5 bg-white rounded animate__animated animate__fadeInLeft"
+        >
+          <div
+            className="card-header"
+          >
+            <h4>
+              Inicio de Sesión
+            </h4>
+          </div>
+          <div
+            className="card-body"
+          >
+            <form
+              className=""
+              onSubmit={[Function]}
+              style={
+                Object {
+                  "padding": 2,
+                }
+              }
+            >
+              <div
+                className="mb-3"
+              >
+                <label
+                  className="form-label"
+                >
+                  Tipo de Usuario
+                </label>
+                <select
+                  className="form-select"
+                  name="rol"
+                  onChange={[Function]}
+                >
+                  <option
+                    value="Estudiante"
+                  >
+                    Estudiante
+                  </option>
+                  <option
+                    value="Docente"
+                  >
+                    Docente
+                  </option>
+                  <option
+                    value="Administrativo"
+                  >
+                    Administrativo
+                  </option>
+                  <option
+                    value="Contable"
+                  >
+                    Contable
+                  </option>
+                </select>
+              </div>
+              <div
+                className="mb-3"
+              >
+                <label
+                  className="form-label"
+                >
+                  Cédula de Identidad
+                </label>
+                <input
+                  aria-describedby="emailHelp"
+                  className="form-control"
+                  id="cedula"
+                  maxLength="10"
+                  name="ci"
+                  onChange={[Function]}
+                  placeholder="Cédula sin guion"
+                  required={true}
+                  type="text"
+                />
+                <div
+                  className="form-text"
+                  id="emailHelp"
+                />
+              </div>
+              <div
+                className="mb-3"
+              >
+                <label
+                  className="form-label"
+                >
+                  Contraseña
+                </label>
+                <input
+                  className="form-control"
+                  id="password"
+                  name="password"
+                  onChange={[Function]}
+                  required={true}
+                  type="password"
+                />
+              </div>
+              <button
+                className="btn  back-istmas"
+                type="submit"
+              >
+                <b>
+                  Iniciar Sesión
+                </b>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <Footer />
+</div>
+`;

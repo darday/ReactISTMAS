@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { Component } from 'react'
 import { Redirect, Route } from 'react-router-dom'
 import Cookies from 'universal-cookie'
-import Contenido from '../components/contenido/Contenido'
+// import Contenido from '../components/contenido/Contenido'
 import Matricularme from '../components/estudiante/matriculas/Matricularme'
 import EditarPerfil from '../components/estudiante/perfil/EditarPerfil'
 import VerPerfil from '../components/estudiante/perfil/VerPerfil'
@@ -98,20 +98,22 @@ export default class RutasEstudiante extends Component {
             return(<Redirect to="/login" />);
         }
         //si el rol es diferente de Estudiante mandamnos a error
-        if(cookie.get("rol") !== "Estudiante"){
+        if(cookie.get("rol") !== 'Estudiante'){
             return(<Redirect to="/errorpermiso" />);
         }
 
         return (
             <>
                 <NavbarGeneral /> 
-                <div id="layoutSidenav"  style={{paddingTop:"8.5vh"}}>
+                <div id="layoutSidenav" >
                     <SidebarEstudiante />
                     <div id="layoutSidenav_content">
                         <main>
                             <div className="container-fluid">                       
                                 {/* <Contenido />  */}
                                 <div className="animate__animated animate__fadeIn" style={{}}>
+                                    <br/>
+                                    <br/>
                                     <h5 className="mt-4 "><b>Carrera de { carreraEstudiante}</b></h5>
                                 </div>   
                                     <Route  path="/estudiante/EstudianteMatricula"  component={Matricularme} />                         

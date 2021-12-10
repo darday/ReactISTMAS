@@ -1,57 +1,45 @@
-import axios from 'axios';
-import React, { Component } from 'react'
-import Cookies from 'universal-cookie';
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import { NavbarLog } from '../navbar/NavbarLog';
 import { Footer } from '../footer/Footer';
-import { NavbarLog } from '../navbar/NavbarLog'
-import "../services/ApiRest"
+import { ApiUrl } from '../services/ApiRest';
+
 
 import './CarrerasScreen.css';
-import { ApiUrl } from '../services/ApiRest';
+import Cookies from 'universal-cookie/es6';
 
 const baseUrl= ApiUrl + "listarcarreras";
 const cookies = new Cookies();
 
-export default class CarrerasScreen extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {    
-            carrera:[]       
-        };
+export const CarrerasScreen = () => {
+
     
-        this.handleChange = this.handleChange.bind(this);
-        
-    }
+    const [data, setdata] = useState([]);
 
- 
-
-    handleChange = async(e)=> {
-        await this.setState({[e.target.name]: e.target.value});
-        var idCarrera = this.state.idCarrera;
+    const handleChange = (e)=>{
+        const {name, value} = e.target;
+       
+        var idCarrera = value;
         cookies.set('idCarrera', idCarrera,{path:"/"});
-       // console.log(idCarrera);
-
-        //cookies.set('id',dato.id,{path:"/"})
         window.location.href="/carrera";
-       //console.log(this.state.idCarrera);
-        
-    }  
-
-   componentDidMount() {
-    axios.get(baseUrl   )
-      .then(res => {
-        const carrera = res.data;
-        this.setState({ carrera });
-       
-      })
+        // console.log(name);
+        // console.log(value);
     }
 
-    render() {
-       
-        return (
-            <div className="Login-component colorb "  >
-                <NavbarLog/>
-                
+    useEffect(() => {
+        axios.get(baseUrl)
+        .then(res=>{
+            setdata(res.data);
+            console.log(data);
+        });
+    
+    }, []);
+
+
+    return (
+        <div className="Login-component colorb "  >
+            <NavbarLog/>                
                 <div className="container " style={{ width:"90%" ,height:"100vh"}}>                    
                     <div className="row ">
                         <div className= "carrera-select   col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 color-istmas">
@@ -62,11 +50,11 @@ export default class CarrerasScreen extends Component {
                                 <div className="card-body">
                                     <div className="mb-3">
                                         <label  className="form-label">Seleccione una carrera</label>
-                                            <select className="form-select" name="idCarrera" value={this.state.value} onChange={this.handleChange} aria-label="Default select example">
+                                            <select className="form-select" name="idCarrera"  onChange={handleChange} aria-label="Default select example">
                                                 <option value="undefined">Seleccione una carrera</option>
                                                 
                                                 
-                                                    { this.state.carrera.map(person => <option key={person.id_carrera} value={person.id_carrera} > { person.descripcion_carrera}</option>)}
+                                                    { data.map(person => <option key={person.id_carrera} value={person.id_carrera} > { person.descripcion_carrera}</option>)}
                                                     
                                                 
                                             </select>
@@ -82,8 +70,7 @@ export default class CarrerasScreen extends Component {
                     </div>
                     
                 </div>
-                <Footer />
-            </div>
-        )
-    }
+            <Footer />
+        </div>
+    )
 }

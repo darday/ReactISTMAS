@@ -3,16 +3,17 @@ import axios from 'axios';
 import React, { Component } from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
 import Cookies from 'universal-cookie'
-import AgregarDocente from '../components/administrador/docentes/AgregarDocente'
+import {AgregarDocente} from '../components/administrador/docentes/AgregarDocente'
 import { ListarDocentes } from '../components/administrador/docentes/ListarDocentes'
 import { HomeAdmin } from '../components/administrador/home/HomeAdmin';
+import { AgregarDiaHora } from '../components/administrador/horarios/AgregarDiaHora';
 import InscribirEstudiantes from '../components/administrador/inscripción/InscribirEstudiantes'
-import ListarEstudiantesInscritos from '../components/administrador/inscripción/ListarEstudiantesInscritos'
+import {ListarEstudiantesInscritos} from '../components/administrador/inscripción/ListarEstudiantesInscritos'
 import ListarSolicitudMatricula from '../components/administrador/matriculas/ListarSolicitudMatricula'
 import ListarPagos from '../components/administrador/pagos/ListarPagos';
 import EditarPerfilAdministrativo from '../components/administrador/perfil/EditarPerfilAdministrativo'
 import PerfilAdministrativo from '../components/administrador/perfil/PerfilAdministrativo'
-import AgregarPersAdmin from '../components/administrador/personalAdmin/AgregarPersAdmin'
+import {AgregarPersAdmin} from '../components/administrador/personalAdmin/AgregarPersAdmin'
 import { ListarPersonalAdministrativo } from '../components/administrador/personalAdmin/ListarPersonalAdministrativo';
 import VerInfoAdministrativo from '../components/administrador/personalAdmin/VerInfoAdministrativo';
 import Contenido from '../components/contenido/Contenido'
@@ -54,9 +55,9 @@ export default class RutasAdministrativo extends Component {
         if(!cookie.get("log")){
             return(<Redirect to="/login" />);
         }
-
-        if(cookie.get("rol") !== "administrativo"){
-           // return(<Redirect to="/errorpermiso" />);
+        //console.log(cookie.get("rol"));
+        if(cookie.get("rol") !== 'Administrativo'){
+           return(<Redirect to="/errorpermiso" />);
         }
 
 
@@ -64,7 +65,7 @@ export default class RutasAdministrativo extends Component {
             
             <>
                 <NavbarGeneral /> 
-                <div id="layoutSidenav" style={{paddingTop:"8.5vh"}} >
+                <div id="layoutSidenav" style={{}} >
                     <Sidebar />
                     <div id="layoutSidenav_content">
                         <main>
@@ -97,6 +98,9 @@ export default class RutasAdministrativo extends Component {
 
                                     {/*   PAGOS */}
                                     <Route  path="/administrativo/ListarPagos"  component={ListarPagos} />   
+
+                                    {/* HORARIOS */}
+                                    <Route  path="/administrativo/AgregarHorario-Dia-Hora"  component={AgregarDiaHora} />   
 
 
                             </div>

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import {Button,Modal, FormGroup, Input, Label, ModalBody, ModalFooter, ModalHeader, Media } from 'reactstrap'
+// import { Link } from 'react-router-dom'
+import {Button,Modal, ModalFooter, ModalHeader, Media } from 'reactstrap'
 import 'bootstrap/dist/css/bootstrap.css';
 
 import '../../services/ApiRest'
@@ -33,8 +33,6 @@ export default class ListarSolicitudMatricula extends Component {
     componentDidMount(){
        //destruye la tabla para des´pues cponstruirla de nuevo
         
-
-
         //obtener carreras
         axios.get(ApiUrl+"carreras")
         .then(respuesta=>{

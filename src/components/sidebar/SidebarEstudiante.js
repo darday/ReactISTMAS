@@ -32,9 +32,9 @@ export default class SidebarEstudiante extends Component {
         
         
         return (
-            <div id="layoutSidenav_nav"  style={{width:226}}>
-                <nav className="sb-sidenav accordion sb-sidenav-dark animate__animated animate__fadeInLeft" id="sidenavAccordion">
-                    <div className="sb-sidenav-menu">
+            <div id="layoutSidenav_nav"  style={{width:226,height:"auto",}}>
+                <nav className="sb-sidenav accordion sb-sidenav-dark animate__animated animate__fadeInLeft" id="sidenavAccordion" style={{paddingTop:"4.5vh"}} >
+                    <div className="sb-sidenav-menu"  style={{height:"91vh"}}>
                         <div className="nav">
                             <div className="sb-sidenav-menu-heading">ESTUDIANTE ISTMAS</div>
                             <Link to="/estudiante">

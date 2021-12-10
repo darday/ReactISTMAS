@@ -1,7 +1,7 @@
-import { Button, Link, makeStyles, Modal, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
-import { Delete, Edit } from '@material-ui/icons';
+import { Button, Link, makeStyles, Modal} from '@material-ui/core';
+// import { Delete, Edit } from '@material-ui/icons';
 import axios from 'axios'
-import MaterialTable from 'material-table';
+// import MaterialTable from 'material-table';
 import React, { useEffect, useState } from 'react'
 import { ApiUrl } from '../../services/ApiRest'
 
@@ -11,11 +11,12 @@ import { ApiUrl } from '../../services/ApiRest'
 
 const urlListAdmin= ApiUrl+"admins";
 const urlAgregarAdmin=(ApiUrl+"registro-admin");
+const urlEliminarAdmin=(ApiUrl+"admins/");
 
 
-//para cargar klos datos del script 
 
-       
+
+
 
 ///*****************ESTILO DEL MODAL****************** */
 const useStyles = makeStyles((theme) => ({
@@ -55,38 +56,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-  ////////*FIN DE ESTIOS DEL MODAL*******************/
-  const columns=[
-    {
-      title:'Nombre Administratico',
-      field: `nombres_administrativo`
-    },
-    {
-      title:'Cédula de Identidad',
-      field: 'numero_identificacion_administrativo'
-    },
-    {
-      title:'Email',
-      field: 'email_administrativo'
-    },
-    {
-      title:'Celular',
-      field: 'celular_administrativo'
-    },
-    {
-      title:'Direccion',
-      field: 'direccion_administrativo'
-    },
-  ];
-
-  /////////paginación////
-  const paginacionOpciones={
-    rowsPerPageText: 'Filas por Página',
-    rangeSeparatorText: 'de',
-    selectAllRowsItem: true,
-    selectAllRowsItemText: 'Todos',
-  }
-
+  
   
 export const ListarPersonalAdministrativo = () => {
 
@@ -120,78 +90,70 @@ export const ListarPersonalAdministrativo = () => {
           [name]: value
         }));
         console.log(consolaSeleccionada);
-      }
+    }
 
 
     //*******CONSULTA PARA LISTAR ADMINISTRADORES************** */
     const peticionGet=async()=>{
+       //hacemos la peticion de datos 
         await axios.get(urlListAdmin)
         .then(response=>{
           setdata(response.data);
           console.log(response.data)
-          const script = document.createElement("script");
-          script.src = `/assets/demo/datatables-demo.js`;
-          script.async = true;
-          document.body.appendChild(script); 
-          
-
-
         })
-      }
-    
-      const refrescarDataTable=()=>{
-        //     Destruir la tabla para crear una nueva con lo9s datos
+         //cargamos los datos nuevos
+         const script = document.createElement("script");
+         script.src = `/assets/demo/datatables-demo.js`;
+         script.async = true;
+         document.body.appendChild(script); 
+    }
+    //Elimina la datatable
+    const deleteTable=()=>{        
        const script1 = document.createElement("script");
        script1.src = `/assets/demo/datatable-destroy.js`;
        script1.async = true;
-       document.body.appendChild(script1);    
-
-       const script = document.createElement("script");
-       script.src = `/assets/demo/datatables-demo.js`;
-       script.async = true;
-       document.body.appendChild(script);
-
-
-   }
+       document.body.appendChild(script1);   
+    }
     
     //*******CONSULTA post PARA AGREGAR ADMINISTRADORES************** */
-      const peticionPost=async()=>{
-          await axios.post(urlAgregarAdmin,{
-            nombres_administrativo: consolaSeleccionada.nombres_administrativo, 
-            apellidos_administrativo: consolaSeleccionada.apellidos_administrativo, 
-            numero_identificacion_administrativo: consolaSeleccionada.numero_identificacion_administrativo,
-            fecha_nacimiento_administrativo: consolaSeleccionada.fecha_nacimiento_administrativo,
-            email_administrativo: consolaSeleccionada.email_administrativo, 
-            celular_administrativo:consolaSeleccionada.celular_administrativo,
-            direccion_administrativo:consolaSeleccionada.direccion_administrativo,
-            password_administrativo: consolaSeleccionada.password,
-            convencional_administrativo:consolaSeleccionada.convencional_administrativo
+    const peticionPost=async()=>{
+        deleteTable();
+        await axios.post(urlAgregarAdmin,{
+        nombres_administrativo: consolaSeleccionada.nombres_administrativo, 
+        apellidos_administrativo: consolaSeleccionada.apellidos_administrativo, 
+        numero_identificacion_administrativo: consolaSeleccionada.numero_identificacion_administrativo,
+        fecha_nacimiento_administrativo: consolaSeleccionada.fecha_nacimiento_administrativo,
+        email_administrativo: consolaSeleccionada.email_administrativo, 
+        celular_administrativo:consolaSeleccionada.celular_administrativo,
+        direccion_administrativo:consolaSeleccionada.direccion_administrativo,
+        password_administrativo: consolaSeleccionada.password,
+        convencional_administrativo:consolaSeleccionada.convencional_administrativo
 
         })
-            .then(response=>{
-                setdata(data.concat(response.data.data))                
-                abrirCerrarModalInsertar()
-            }
-            )
-      }
+        .then(response=>{            
+            setdata(data.concat(response.data.data))    
+            abrirCerrarModalInsertar()
+            peticionGet();       
+        }
+        )
+    }
 
       
-    //*******CONSULTA put PARA AGREGAR ADMINISTRADORES************** */
-      const peticionPut=async()=>{
-          console.log("Put");
-      }
+     //*******CONSULTA put PARA Actualizar ADMINISTRADORES************** */
+    const peticionPut=async()=>{
+        await axios.put()
+    }
 
-      const peticionDelete=async()=>{
-        // await axios.delete(baseUrl+consolaSeleccionada.id)
-        // .then(response=>{
-        //   setData(data.filter(consola=>consola.id!==consolaSeleccionada.id));
-        //   abrirCerrarModalEliminar();
-        // })
-        console.log("Delete");
-
-      }      
+    const peticionDelete=async()=>{
+        deleteTable();
+        await axios.delete(urlEliminarAdmin+consolaSeleccionada.id_administrativo)
+        .then(response=>{
+            peticionGet();   
+            abrirCerrarModalDelete();
+        })
+    }      
     
-    //*******ABRIR CERRAR MODALES************** */
+        //*******ABRIR CERRAR MODALES************** */
 
     const abrirCerrarModalInsertar=()=>{
         setModalInsertar(!modalInsertar);
@@ -207,8 +169,8 @@ export const ListarPersonalAdministrativo = () => {
         setconsolaSeleccionada(consola);
         (caso==="Editar")? abrirCerrarModalEditar():abrirCerrarModalDelete();
         //abrirCerrarModalEditar();
-        // console.log("Editar");
-        // console.log(consola);
+         console.log("Editar");
+         console.log(consola);
     }        
     
     //*******BODY DEL MODAL************** */
@@ -441,10 +403,7 @@ export const ListarPersonalAdministrativo = () => {
                     <i className="fas fa-table mr-1"></i>
                     Lista Estudiantes Inscritos
                 </div>
-                <div className="card-header ">
-                        <button type="button" className="btn btn-outline-secondary" onClick={refrescarDataTable}><i className="fas fa-sync-alt"></i>Preparar Página Para Exportación</button>
-
-                    </div>
+                
                 <div className="card-body">
                     <div className="table-responsive">
                         <table className="table table-striped contenidoTabla"  id="dataTable" width="100%" >
@@ -475,13 +434,9 @@ export const ListarPersonalAdministrativo = () => {
                                                 <i className="puntero fas fa-pen"  ></i>
 
                                             </button>
-                                            <Link to="/login">
-                                                <button className="btn btn-outline-danger"   > 
+                                                <button className="btn btn-outline-danger"  onClick={()=>seleccionarConsola(consola,'Eliminar')} > 
                                                     <i className=" puntero fas fa-trash-alt" ></i>          
-                                                </button>
-
-                                            </Link>
-                                            
+                                                </button>                                            
                                         </td>   
                                         {/* <td>{consola.email}</td>
                                         <td>{consola.first_name}</td>
@@ -502,70 +457,7 @@ export const ListarPersonalAdministrativo = () => {
                     </div>
                 </div>
             </div>
-
-
-          {/* <MaterialTable
-            columns={columns}
-            data={data}
-            title="Personal Adminstrativo"  
-            
-
-
-            actions={[        
-              {
-                
-                icon: 'edit',
-                tooltip: 'Editar Información',
-                onClick: (event, rowData) => seleccionarConsola(rowData, "Editar"),
-                iconProps: { style: {  color: "#76a349" } },
-                
-              },
-              {
-                icon: 'delete',
-                tooltip: 'Eliminar Información',
-                onClick: (event, rowData) => seleccionarConsola(rowData, "Eliminar"),
-                iconProps: { style: {  color: "#dc3545" } },
-
-              }
-              
-            ]}
-
-            options={{
-              actionsColumnIndex: -1,
-              exportButton: true,
-              exportFileName:"Listado de Administrativos",
-              pageSize:10,
-              pageSizeOptions:[10, 20, 50,100]
-            }}
-
-            localization={{
-              header:{
-                actions: "Acciones"
-              },
-              body: {
-                emptyDataSourceMessage: 'No se han encontrado datos'
-                
-              },
-              pagination: {
-                labelDisplayedRows: '{from}-{to} de {count}',
-                labelRowsSelect: 'Filas',
-                labelRowsPerPage: 'Filas por Página:',
-                firstAriaLabel: 'Primera Página',
-                firstTooltip: 'Primera Página',
-                previousAriaLabel: 'Siguiente Página',
-                previousTooltip: 'Página Anterior',
-                nextAriaLabel: 'Siguiente Página',
-                nextTooltip: 'Siguiente Página',
-                lastAriaLabel: 'Última Página',
-                lastTooltip: 'Última Página'
-              },
-              toolbar: {
-                searchTooltip: 'Buscar'
-              },
-
-              
-            }}
-        /> */}
+          
 
         <Modal style={{ overflow: 'scroll' }}
             open={modalInsertar}
@@ -587,67 +479,7 @@ export const ListarPersonalAdministrativo = () => {
         </Modal>
 
 
-            {/* <Button onClick={()=>abrirCerrarModalInsertar()}>Insertar</Button>
-            <TableContainer>
-                <Table>
-                    <TableHead>
-                        <TableRow >
-                            <TableCell>Nombres</TableCell>
-                            <TableCell>Cédula de Identidad</TableCell>
-                            <TableCell>Email</TableCell>
-                            <TableCell>Celular</TableCell>
-                            <TableCell>Dirección</TableCell>
-                            <TableCell>Acciones</TableCell>
-                        </TableRow>
-                        
-                    </TableHead>
-                    
-
-                    <TableBody>
-                    {data.map(consola=>(
-                        <TableRow key={consola.id_administrativo}>
-                        <TableCell>{consola.apellidos_administrativo}</TableCell>
-                        <TableCell>{consola.numero_identificacion_administrativo}</TableCell>
-                        <TableCell>{consola.email_administrativo}</TableCell>
-                        <TableCell>{consola.celular_administrativo}</TableCell>
-                        <TableCell>{consola.direccion_administrativo}</TableCell>
-                        <TableCell>
-                            {/* <Edit/>
-                            <Delete/> 
-                                <button className="btn btn-outline-success" onClick={()=>seleccionarConsola(consola,"Editar")} > 
-                                    <i className="puntero fas fa-pen" ></i>
-                                </button>
-                                
-                                <button className="btn btn-outline-danger"   onClick={()=>seleccionarConsola(consola,"Eliminar")} > 
-                                    <i className=" puntero fas fa-trash-alt" ></i>          
-                                </button>
-                        </TableCell>
-                        
-                        </TableRow>
-                    ))}
-                    </TableBody>
-                </Table>
-        </TableContainer>
-
-        <Modal style={{ overflow: 'scroll' }}
-            open={modalInsertar}
-            onClose={()=>abrirCerrarModalInsertar()}>
-            {bodyInsertar}
-        </Modal>
-
-        
-        <Modal style={{ overflow: 'scroll' }}
-            open={modalEditar}
-            onClose={()=>abrirCerrarModalEditar()}>
-            {bodyEditar}
-        </Modal>
-
-        <Modal 
-            open={modalDelete}
-            onClose={()=>abrirCerrarModalDelete()}>
-            {bodyDelete}
-        </Modal>
- */}
+          
 
         
             

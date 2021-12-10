@@ -12,7 +12,7 @@ const urlAdministrativo=ApiUrl+"admins/"; //pasar id del estudiante
 const idAdministrativo = cookie.get("idAdministrativo");    //declaramos una variable para usar la cookie del login
 
 
-export default class Sidebar extends Component {
+export default class SidebarContable extends Component {
 
     componentDidMount() {
         // Get que devuelve los datos de un estudiante recibiendo un id
@@ -38,8 +38,8 @@ export default class Sidebar extends Component {
                         <nav className="sb-sidenav accordion sb-sidenav-dark animate__animated animate__fadeInLeft" id="sidenavAccordion" style={{paddingTop:"4.5vh"}}>
                             <div className="sb-sidenav-menu" style={{height:"91vh"}}>
                                 <div className="nav">
-                                    <div className="sb-sidenav-menu-heading">PERSONAL ADMINISTRATIVO</div>
-                                    <Link to="/administrativo">
+                                    <div className="sb-sidenav-menu-heading">PERSONAL CONTABILIDAD</div>
+                                    <Link to="/contable">
                                         <div className="nav-link" href="index.html">
                                             <div className="sb-nav-link-icon">
                                             <i className="fas fa-university"></i>                                        
@@ -49,24 +49,7 @@ export default class Sidebar extends Component {
                                     </Link>
 
                                     <div className="sb-sidenav-menu-heading"></div>
-                                    {/* <div className="nav-link collapsed puntero" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                        <div className="sb-nav-link-icon">
-                                            <i className="far fa-user"></i>
-                                        </div>
-                                        ESTUDIANTES
-                                        <div className="sb-sidenav-collapse-arrow">
-                                            <i className="fas fa-angle-down"></i>
-                                        </div>
-                                    </div>
-                                    <div className="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                        <nav className="sb-sidenav-menu-nested nav">
-                                            <div className="nav-link puntero" href="#">Agregar Estudiante </div>
-                                            <div className="nav-link puntero" href="#">Editar Estudiante</div>
-                                            <div className="nav-link puntero" href="#">Visualizar Información Estudiante</div>
-                                            <div className="nav-link puntero" href="#">Reporte Estudiante</div>
-                                            <div className="nav-link puntero" href="#">Eliminar Estudiante</div>
-                                        </nav>
-                                    </div> */}
+                                
                                     <div className="nav-link collapsed puntero" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                         <div className="sb-nav-link-icon">
                                             <i className="far fa-user"></i>
@@ -78,80 +61,25 @@ export default class Sidebar extends Component {
                                     </div>
                                     <div className="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                         <nav className="sb-sidenav-menu-nested nav">
-                                            <Link to="/administrativo/PerfilAdministrativo" ><div className="nav-link puntero" href="#">Ver Perfil </div></Link>
-                                            <Link to="/administrativo/EditarPerfilAdministrativo" ><div className="nav-link puntero" href="#">Editar Perfil </div></Link>
+                                            <Link to="/contable/Perfil" ><div className="nav-link puntero" href="#">Ver Perfil </div></Link>
+                                            <Link to="/contable/EditarPerfil" ><div className="nav-link puntero" href="#">Editar Perfil </div></Link>
                                             
                                             
                                         </nav>
                                     </div>
-
-                                    <div className="nav-link collapsed puntero" href="#" data-toggle="collapse" data-target="#collapseAdministrativo" aria-expanded="false" aria-controls="collapseLayouts">
-                                        <div className="sb-nav-link-icon">
-                                            <i className="fas fa-hospital-user"></i>       
-                                        </div>
-                                        ADMINISTRATIVO
-                                        <div className="sb-sidenav-collapse-arrow">
-                                            <i className="fas fa-angle-down"></i>
-                                        </div>
-                                    </div>
-                                    <div className="collapse" id="collapseAdministrativo" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                        <nav className="sb-sidenav-menu-nested nav">
-                                            
-                                        
-                                            <Link to="/administrativo/IngresarPersonalAdministrativo"><div className="nav-link"  >Agregar Administrativo </div></Link>
-                                            <Link to="/administrativo/ListarPersonalAdministrativo"><div className="nav-link"  >Listar Personal Administrativo </div></Link>
-                                            
-                                           
-                                        </nav>
-                                    </div>
-                                    <div className="nav-link collapsed puntero" href="#" data-toggle="collapse" data-target="#collapseDocentes" aria-expanded="false" aria-controls="collapseLayouts">
-                                        <div className="sb-nav-link-icon">
-                                            <i className="fas fa-graduation-cap"></i>                                        </div>
-                                        DOCENTES
-                                        <div className="sb-sidenav-collapse-arrow">
-                                            <i className="fas fa-angle-down"></i>
-                                        </div>
-                                    </div>
-                                    <div className="collapse" id="collapseDocentes" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                        <nav className="sb-sidenav-menu-nested nav">
-                                            
-                                        
-                                            <Link to="/administrativo/AgregarDocente"><div className="nav-link"  >Agregar Docente </div></Link>
-                                            <Link to="/administrativo/ListarDocente"><div className="nav-link"  >Listar Docentes </div></Link>
-                                            
-                                           
-                                        </nav>
-                                    </div>
-
                                     <div className="nav-link collapsed puntero" href="#" data-toggle="collapse" data-target="#collapseInscripcion" aria-expanded="false" aria-controls="collapseLayouts">
                                         <div className="sb-nav-link-icon">
-                                            <i className="fas fa-users"></i>
+                                            <i className="fas fa-clipboard"></i>
                                         </div>
-                                        ESTUDIANTES
+                                        INSCRIPCIONES
                                         <div className="sb-sidenav-collapse-arrow">
                                             <i className="fas fa-angle-down"></i>
                                         </div>
                                     </div>
                                     <div className="collapse" id="collapseInscripcion" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                         <nav className="sb-sidenav-menu-nested nav">
-                                            <Link to="/administrativo/InscribirEstudiante"><div className="nav-link"  >Agregar Estudiante </div></Link>
-                                            <Link to="/administrativo/ListarEstudiantesInscritos">  <div className="nav-link" href="#">Listar Estudiantes Registrados </div></Link>                                                                                   
-                                        </nav>
-                                    </div>
-
-                                    <div className="nav-link collapsed puntero" href="#" data-toggle="collapse" data-target="#collapseHorarios" aria-expanded="false" aria-controls="collapseLayouts">
-                                        <div className="sb-nav-link-icon">
-                                            <i className="far fa-calendar-alt"></i>
-                                        </div>
-                                        HORARIOS
-                                        <div className="sb-sidenav-collapse-arrow">
-                                            <i className="fas fa-angle-down"></i>
-                                        </div>
-                                    </div>
-                                    <div className="collapse" id="collapseHorarios" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                                        <nav className="sb-sidenav-menu-nested nav">
-                                            <Link to="/administrativo/AgregarHorario-Dia-Hora"><div className="nav-link"  >Agregar Día - Hora </div></Link>
-                                            <Link to="/administrativo/ListarEstudiantesInscritos">  <div className="nav-link" href="#">Listar Estudiantes Registrados </div></Link>                                                                                   
+                                            <Link to="/contable/InscribirEstudiante"><div className="nav-link"  >Inscribir Estudiante </div></Link>
+                                            <Link to="/contable/ListarEstudiantesInscritos">  <div className="nav-link" href="#">Listar Estudiantes Inscritos </div></Link>                                                                                   
                                         </nav>
                                     </div>
 
@@ -166,7 +94,7 @@ export default class Sidebar extends Component {
                                     </div>
                                     <div className="collapse" id="collapseMatriculas" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                         <nav className="sb-sidenav-menu-nested nav">
-                                            <Link to="/administrativo/ListarSolicitudMatriculas"><div className="nav-link" href="#">Listar solicitud de matrículas </div></Link>
+                                            <Link to="/contable/ListarSolicitudMatriculas"><div className="nav-link" href="#">Listar solicitud de matrículas </div></Link>
                                             {/* <div className="nav-link" href="#">Reporte de Solicitude de matrículas</div> */}
                                         </nav>
                                     </div>
@@ -183,7 +111,7 @@ export default class Sidebar extends Component {
                                     <div className="collapse" id="collapsePagos" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                         <nav className="sb-sidenav-menu-nested nav">
                                             {/* <div className="nav-link" href="#">Buscar Comprobante por CI</div> */}
-                                            <Link to="/administrativo/ListarPagos">
+                                            <Link to="/contable/ListarPagos">
                                                 <div className="nav-link" href="#">Listar Comprobantes de Pagos </div>
                                             </Link>
                                         </nav>

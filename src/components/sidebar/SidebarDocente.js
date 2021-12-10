@@ -9,8 +9,8 @@ export default class SidebarDocente extends Component {
         return (
            
                 <div id="layoutSidenav_nav"  style={{width:226}}>
-                        <nav className="sb-sidenav accordion sb-sidenav-dark animate__animated animate__fadeInLeft" id="sidenavAccordion">
-                            <div className="sb-sidenav-menu">
+                        <nav className="sb-sidenav accordion sb-sidenav-dark animate__animated animate__fadeInLeft" id="sidenavAccordion" style={{paddingTop:"4.5vh"}}>
+                            <div className="sb-sidenav-menu" style={{height:"91vh"}} >
                                 <div className="nav">
                                     <div className="sb-sidenav-menu-heading">Core</div>
                                     <Link to="/">
@@ -34,7 +34,7 @@ export default class SidebarDocente extends Component {
                                     </a>
                                     <div className="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                         <nav className="sb-sidenav-menu-nested nav">
-                                            <a className="nav-link" href="#">Ingresar Calificación </a>
+                                            <Link className="nav-link" to="/docente/ingresar-calificacion">Ingresar Calificación </Link>
                                             <a className="nav-link" href="#">Editar Calificación </a>
                                             <a className="nav-link" href="#">Visualizar Calificaciones </a>
                                             <a className="nav-link" href="#">Reporte de Calificaciones </a>

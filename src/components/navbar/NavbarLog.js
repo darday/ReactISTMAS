@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
-export const NavbarLog = () => {
+export const NavbarLog = () => { 
     return (
         <div>
             {/* <nav className="navbar navbar-color ">

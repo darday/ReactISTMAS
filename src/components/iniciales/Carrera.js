@@ -58,7 +58,8 @@ export default class Carrera extends Component {
 
             ninguno:"Ninguno",
             tituloAcademico:"",
-            abierto: false 
+            abierto: false,
+            rolEstudiante:"Estudiante" 
         };
     
         this.handleChange = this.handleChange.bind(this);
@@ -70,7 +71,7 @@ export default class Carrera extends Component {
         this.setState({estado:""});
         //console.log( this.state );
 
-        if(this.state.idFormacionEstudiante == 1 || this.state.idFormacionEstudiante == "undefined"  ){
+        if(this.state.idFormacionEstudiante != 8 || this.state.idFormacionEstudiante == "undefined"  ){
             this.setState({mostrarText:1});            
             console.log("No mostrar");
             this.setState({tituloAcademico : this.state.ninguno  });
@@ -115,7 +116,8 @@ export default class Carrera extends Component {
                 tipo_colegio_id:this.state.idTipoColegio,           
                 descripcion_colegio:this.state.nombreColegio,
                 colegio_id:this.state.colegio_id,
-                tipo_bachillerato_id:this.state.idBachillerato             
+                tipo_bachillerato_id:this.state.idBachillerato,
+                rol_estudiante:this.state.rolEstudiante             
                 
 
             })
@@ -207,7 +209,7 @@ export default class Carrera extends Component {
         .then(res=>{
             const ocupacion = res.data;
             this.setState({ocupacion});
-          //  console.log(ocupacion);
+           console.log(ocupacion);
         })
 
         /////////////

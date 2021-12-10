@@ -30,10 +30,11 @@ export default class PerfilAdministrativo extends Component {
           .then(res => {
             const administrativo = res.data;
             this.setState({ administrativo });
-            console.log(administrativo);
-           
+            //console.log(administrativo);          
           
           })
+       
+
     }
 
     render() {

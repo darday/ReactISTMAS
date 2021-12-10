@@ -4,9 +4,15 @@ import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import { ApiUrl } from '../../services/ApiRest';
 
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+
 const cookie = new Cookies();
 const urlAdministrativo= ApiUrl+"admins/"; //pasar id del estudiante
 const idAdministrativo = cookie.get("idAdministrativo");    //declaramos una variable para usar la cookie del login
+const urlActualizar = ApiUrl+"admins/";
+
+const idEstudiante= cookie.get('idEstudiante');
 
 
 export default class EditarPerfilAdministrativo extends Component {
@@ -60,7 +66,43 @@ export default class EditarPerfilAdministrativo extends Component {
 
     editarAdministrativo = async (e)=>{
         e.preventDefault();
-        console.log("Aun no está en el backend")
+         await axios
+            .put(urlActualizar+idEstudiante, {
+                nombres_administrativo: this.state.firstName,
+                apellidos_administrativo: this.state.lastName,
+                fecha_nacimiento_administrativo: this.state.fechaNaci,
+                email_administrativo: this.state.email,
+                celular_administrativo:this.state.telfCelular,
+                convencional_estudiante: this.state.telfConvencional,
+                direccion_administrativo:this.state.direccion,
+                numero_identificacion_administrativo: this.state.ci,
+                password_administrativo: this.state.password,
+                //carrera_id: this.state.carrera_seleccionada,
+
+            })
+			.then(response => {
+                console.log(response);
+
+                if(response.data.success === true){
+                    this.setState({estado: response.data.message});
+                    
+                    e.target.reset(); //resetea valores del formulario
+                    this.setState({estado:"Datos Actualizados Correctamente"});
+                    toast.success("Datos Actualizados Correctamente!", {position: toast.POSITION.BOTTOM_CENTER});
+                    
+                    
+                }else{
+                    this.setState({estado: response.data.message});
+                    toast.warning(this.state.estado, {position: toast.POSITION.BOTTOM_CENTER});
+                }
+			})
+			.catch(error => {
+                //console.log(error);
+                this.setState({estado:"Error No se pudo conectar con el servidor"});
+                toast.error("Error No se pudo conectar con el servidor", {position: toast.POSITION.BOTTOM_CENTER});
+
+
+            })
     }
 
     
@@ -135,7 +177,6 @@ export default class EditarPerfilAdministrativo extends Component {
                                         <input type="password" name="password" id="password"  onChange={this.handleChange}   className="form-control" placeholder="Password"   required />
                                         <div id="emailHelp" className="form-text "  ></div>
                                     
-
                                     </div>
                                 </div>  
                                 <div className="col-12 col-sm-6 col-lg-5 col-xl-5 centrar" >

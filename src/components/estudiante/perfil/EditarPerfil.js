@@ -70,9 +70,9 @@ export default class EditarPerfil extends Component {
                 celular_estudiante:this.state.telfCelular,
                 convencional_estudiante: this.state.telfConvencional,
                 direccion_estudiante:this.state.direccion,
-                //numero_identificacion_estudiante: this.state.ci,
+                numero_identificacion_estudiante: this.state.ci,
                 password_estudiante: this.state.password,
-                //carrera_id: this.state.carrera_seleccionada,
+                carrera_id: this.state.carrera_seleccionada,
 
             })
 			.then(response => {
@@ -108,27 +108,6 @@ export default class EditarPerfil extends Component {
     }
 
     componentDidMount() {
-        //  axios.get(urlActualizar+idEstudiante   )
-        // .then(res => {
-        //     console.log("vamos estudiante"+{res});
-        //     const estudiante = res.data[1];
-
-        //     this.setState({
-        //         firstName: res.data.nombres_estudiante,
-        //         lastName: res.data.apellidos_estudiante,
-        //         ci: res.data.numero_identificacion_estudiante,
-        //         fechaNaci:res.data.fecha_nacimiento_estudiante,
-        //         email:res.data.email_estudiante,
-        //         telfCelular:res.data.celular_estudiante,
-        //         telfConvencional:res.data.convencional_estudiante,
-        //         direccion:res.data.direccion_estudiante,
-        //         password:res.data.password_estudiante,
-        //         passwordConfirm:res.data.password_estudiante
-        //     });
-        //     console.log("imprime estu"+estudiante[0]);
-
-
-        // })
         axios.get(urlEstudiante + idEstudiante)
         .then(respuesta=>{
             const estudiante = respuesta.data[1];
@@ -143,15 +122,9 @@ export default class EditarPerfil extends Component {
                 direccion:estudiante.direccion_estudiante,
                 password:estudiante.password_estudiante,
                 passwordConfirm:estudiante.password_estudiante
-            });
-
-            
+            });            
         })
-       
     }
-
-
-
 
     render() {
       //  console.log(this.state.estudiante.id_estudiante);
@@ -160,15 +133,12 @@ export default class EditarPerfil extends Component {
                 <ol className="breadcrumb mb-4">
                                 <li className="breadcrumb-item active">{this.state.estado}</li>
                 </ol>
-
-
                 <div className="card shadow p-3 mb-5 bg-white rounded">
                     <div className="card-header back-istmas">
                         <i className="fas fa-graduation-cap"></i>
                             <b>-Editar Mi Perfil </b>
                     </div>
                     <div className="card-body">
-
                         <form className="" onSubmit={this.actualizarEstudiante} style={{padding:10}} id="create-course-form" >
                             <div className="row ">
                                 <div className="col-12 col-sm-12 col-lg-5 col-xl-5 centrar" >
@@ -190,7 +160,7 @@ export default class EditarPerfil extends Component {
                                 <div className="col-12 col-sm-12 col-lg-5 col-xl-5 centrar" >
                                     <div className="mb-3">
                                         <label  className="form-label">Cédula de Identidad:</label>
-                                        <input type="text" name="ci"  onChange={this.handleChange}  value={this.state.ci} maxLength="10" className="form-control"  placeholder="CI" required/>
+                                        <input type="text" name="ci"  onChange={this.handleChange}  value={this.state.ci} maxLength="10" className="form-control"  placeholder="CI" disabled/>
                                     </div>
                                 </div>
                                 <div className="col-12 col-sm-12  col-lg-5 col-xl-5 centrar" >
