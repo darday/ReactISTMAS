@@ -2,12 +2,21 @@
 
 import { types } from "../types/types"
 
-export const login =(uid,displayName)=>{
+export const iniciarLogin = (ci,password,rol)=>{
+    return (dispatch) =>{
+        setTimeout(() => {
+            dispatch(login(ci,password,rol))
+        }, 3500);
+    }
+}
+
+export const login =(ci,password,rol)=>{
     return {
         type:types.login,
         payload:{
-            uid,
-            displayName
+            ci,
+            password,
+            rol
         }
     }
     

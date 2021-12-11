@@ -11,8 +11,8 @@ import { ApiUrl } from '../services/ApiRest';
 
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
-import { useDispatch } from 'react-redux';
-import { login } from '../../actions/auth';
+// import { useDispatch } from 'react-redux';
+// import { iniciarLogin, login } from '../../actions/auth';
 
 
 const baseUrl=ApiUrl+"auth";
@@ -21,7 +21,7 @@ const cookies = new Cookies();
 
 export const LoginScreen = () => {
 
-    const dispatch = useDispatch();
+    //const dispatch = useDispatch();
 
     const [dataSeleccionada, setdataSeleccionada] = useState({
         rol:'Estudiante',
@@ -34,17 +34,19 @@ export const LoginScreen = () => {
     const handleChange = async(e)=> {
         e.preventDefault();
         await setdataSeleccionada({...dataSeleccionada, [e.target.name]: e.target.value});
-        dataSeleccionada.error='';
-        console.log(   dataSeleccionada.error);        
+        //dataSeleccionada.error='';
+        // console.log(   dataSeleccionada.error);        
     }
 
     const iniciarSesion = async(e)=>{
         
         e.preventDefault();
-        dispatch(login(12345,'Julio'));
-        return;
+        //dispatch(iniciarLogin(dataSeleccionada.ci,dataSeleccionada.password,dataSeleccionada.rol));
+        //return;
         dataSeleccionada.isLogged=true; //indica que se ha comenzado inicio de sesion
         //post q devuelve token,id del estudiante, mensaje, success
+        console.log("Consola enviada");
+        console.log(dataSeleccionada);
         await axios
         .post(baseUrl,{
             numero_identificacion: dataSeleccionada.ci, 
@@ -52,7 +54,9 @@ export const LoginScreen = () => {
             rol:dataSeleccionada.rol
         })
         .then(response =>{
-             //console.log(response);
+            response=response.data;
+            console.log("response:")
+             console.log(response);
             if(response.success == true){
                 toast("Iniciando Sesión", {position: toast.POSITION.TOP_LEFT});
 
