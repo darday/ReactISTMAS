@@ -8,7 +8,7 @@ import { EditarPerfilContable } from '../components/contable/perfil/EditarPerfil
 import { PerfilContable } from '../components/contable/perfil/PerfilContable';
 import Contenido from '../components/contenido/Contenido';
 import FooterDashboard from '../components/footer/FooterDashboard';
-import NavbarGeneral from '../components/navbar/NavbarGeneral'
+import {NavbarGeneral} from '../components/navbar/NavbarGeneral'
 import SidebarContable from '../components/sidebar/SidebarContable';
 
 

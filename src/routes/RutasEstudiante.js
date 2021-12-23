@@ -7,7 +7,7 @@ import Matricularme from '../components/estudiante/matriculas/Matricularme'
 import EditarPerfil from '../components/estudiante/perfil/EditarPerfil'
 import VerPerfil from '../components/estudiante/perfil/VerPerfil'
 import FooterDashboard from '../components/footer/FooterDashboard'
-import NavbarGeneral from '../components/navbar/NavbarGeneral'
+import {NavbarGeneral} from '../components/navbar/NavbarGeneral'
 import SidebarEstudiante from '../components/sidebar/SidebarEstudiante'
 import "../components/services/ApiRest";
 import { ApiUrl } from '../components/services/ApiRest'

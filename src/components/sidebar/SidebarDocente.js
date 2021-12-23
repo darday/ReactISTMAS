@@ -13,7 +13,7 @@ export default class SidebarDocente extends Component {
                             <div className="sb-sidenav-menu" style={{height:"91vh"}} >
                                 <div className="nav">
                                     <div className="sb-sidenav-menu-heading">Core</div>
-                                    <Link to="/">
+                                    <Link to="/docente">
                                         <a className="nav-link" href="index.html">
                                             <div className="sb-nav-link-icon">
                                             <i className="fas fa-university"></i>                                        

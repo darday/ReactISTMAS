@@ -4,7 +4,7 @@ import Cookies from 'universal-cookie'
 import Contenido from '../components/contenido/Contenido'
 import { IngresarCalificaciones } from '../components/docente/calificaciones/IngresarCalificaciones'
 import FooterDashboard from '../components/footer/FooterDashboard'
-import NavbarGeneral from '../components/navbar/NavbarGeneral'
+import {NavbarGeneral} from '../components/navbar/NavbarGeneral'
 import SidebarDocente from '../components/sidebar/SidebarDocente'
 
 

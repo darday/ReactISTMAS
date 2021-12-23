@@ -18,7 +18,7 @@ import { ListarPersonalAdministrativo } from '../components/administrador/person
 import VerInfoAdministrativo from '../components/administrador/personalAdmin/VerInfoAdministrativo';
 import Contenido from '../components/contenido/Contenido'
 import FooterDashboard from '../components/footer/FooterDashboard'
-import NavbarGeneral from '../components/navbar/NavbarGeneral'
+import {NavbarGeneral} from '../components/navbar/NavbarGeneral'
 import { ApiUrl } from '../components/services/ApiRest'
 import Sidebar from '../components/sidebar/Sidebar'
 

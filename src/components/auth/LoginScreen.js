@@ -9,10 +9,10 @@ import { Redirect } from 'react-router-dom';
 import "../services/ApiRest";
 import { ApiUrl } from '../services/ApiRest';
 
-import { toast } from 'react-toastify'
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import { useDispatch } from 'react-redux';
-// import { iniciarLogin, login } from '../../actions/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { iniciarLogin, login } from '../../actions/auth';
 
 
 const baseUrl=ApiUrl+"auth";
@@ -21,7 +21,9 @@ const cookies = new Cookies();
 
 export const LoginScreen = () => {
 
-    //const dispatch = useDispatch();
+   const dispatch = useDispatch();
+//    const authSelector = useSelector( state => state.auth );
+    const state = useSelector( state => state.ui );
 
     const [dataSeleccionada, setdataSeleccionada] = useState({
         rol:'Estudiante',
@@ -30,6 +32,8 @@ export const LoginScreen = () => {
         isLogged:false,
         error:''
     })
+
+    const {rol,ci,password,isLogged,error}=dataSeleccionada;
 
     const handleChange = async(e)=> {
         e.preventDefault();
@@ -41,81 +45,100 @@ export const LoginScreen = () => {
     const iniciarSesion = async(e)=>{
         
         e.preventDefault();
-        //dispatch(iniciarLogin(dataSeleccionada.ci,dataSeleccionada.password,dataSeleccionada.rol));
-        //return;
-        dataSeleccionada.isLogged=true; //indica que se ha comenzado inicio de sesion
-        //post q devuelve token,id del estudiante, mensaje, success
-        console.log("Consola enviada");
-        console.log(dataSeleccionada);
-        await axios
-        .post(baseUrl,{
-            numero_identificacion: dataSeleccionada.ci, 
-            password: dataSeleccionada.password, 
-            rol:dataSeleccionada.rol
-        })
-        .then(response =>{
-            response=response.data;
-            console.log("response:")
-             console.log(response);
-            if(response.success == true){
-                toast("Iniciando Sesión", {position: toast.POSITION.TOP_LEFT});
+        console.log("imprimo");
+        console.log(state);
+        dispatch(iniciarLogin(rol,ci,password,isLogged,error));
+        // console.log(authSelector);
+        // console.log(authSelector.isloged);
+        // if(authSelector.isloged === true && authSelector.rol == 'Administrativo'){
+        //     console.log("hola Estoy en Login Screen");
+        //     window.location.href="/administrativo";
+        //     // return(<Redirect to="/administrativo" />);
 
-                var logeado = dataSeleccionada.isLogged;
-                var rol = dataSeleccionada.rol;
+        // }else{
+        //     console.log("no entra =(")
+        // }
+        
+        
+        return;
+
+
+
+        //post q devuelve token,id del estudiante, mensaje, success
+        // console.log("Consola enviada");
+        // console.log(dataSeleccionada);
+        // await axios
+        // .post(baseUrl,{
+        //     numero_identificacion: dataSeleccionada.ci, 
+        //     password: dataSeleccionada.password, 
+        //     rol:dataSeleccionada.rol
+        // })
+        // .then(response =>{
+        //     response=response.data;
+        //     console.log("response:")
+        //     console.log(response);
+        //     if(response.success == true){
+        //         toast("Iniciando Sesión", {position: toast.POSITION.TOP_LEFT});
+
+        //         dataSeleccionada.isLogged=true; //indica que se ha comenzado inicio de sesion
+
+        //         var logeado = dataSeleccionada.isLogged;
+        //         var rol = dataSeleccionada.rol;
 
                 
-                //declaracion de Cookies que van a ser usadas en todo momento
-                cookies.set('log',logeado,{path:"/"})
-                cookies.set('rol',rol,{path:"/"})
-                cookies.set('token',response.token,{path:"/"})
+        //         //declaracion de Cookies que van a ser usadas en todo momento
+        //         cookies.set('log',logeado,{path:"/"})
+        //         cookies.set('rol',rol,{path:"/"})
+        //         cookies.set('token',response.token,{path:"/"})
                
-                //eliminación de la cookie que viene de carreras
-                cookies.remove('idCarrera',{path:"/"});
+        //         //eliminación de la cookie que viene de carreras
+        //         cookies.remove('idCarrera',{path:"/"});
 
-                //si el Rol de la Cookie es "" realiza alguna acción
-                if(cookies.get('rol') === "Administrativo"){
-                    //console.log(cookies.get('rol'));
-                    cookies.set('idAdministrativo',response.administrativo_id,{path:"/"})
-                    window.location.href="/administrativo";
-                }else{
-                    if(cookies.get('rol') === "Docente"){
-                        cookies.set('idDocente',response.administrativo_id,{path:"/"})
-                        window.location.href="/docente";
-                    }else{
-                        if(cookies.get('rol') === "Estudiante"){
-                            //console.log(cookies.get('token'));
-                            cookies.set('idEstudiante',response.estudiante_id,{path:"/"})
-                            cookies.set('carreraEstudiante',response.descripcion_carrera,{path:"/"})
-                            window.location.href="/estudiante";
-                        }else{
-                            if(cookies.get('rol') === "Contable"){
-                                //console.log(cookies.get('token'));
-                                cookies.set('idEstudiante',response.estudiante_id,{path:"/"})
-                                cookies.set('carreraEstudiante',response.descripcion_carrera,{path:"/"})
-                                window.location.href="/contable";
-                            }
-                        }
-                    }
+        //         //si el Rol de la Cookie es "" realiza alguna acción
+        //         if(cookies.get('rol') === "Administrativo"){
+        //             //console.log(cookies.get('rol'));
+        //             cookies.set('idAdministrativo',response.administrativo_id,{path:"/"})
+        //             window.location.href="/administrativo";
+        //         }else{
+        //             if(cookies.get('rol') === "Docente"){
+        //                 cookies.set('idDocente',response.administrativo_id,{path:"/"})
+        //                 window.location.href="/docente";
+        //             }else{
+        //                 if(cookies.get('rol') === "Estudiante"){
+        //                     //console.log(cookies.get('token'));
+        //                     cookies.set('idEstudiante',response.estudiante_id,{path:"/"})
+        //                     cookies.set('carreraEstudiante',response.descripcion_carrera,{path:"/"})
+        //                     window.location.href="/estudiante";
+        //                 }else{
+        //                     if(cookies.get('rol') === "Contable"){
+        //                         //console.log(cookies.get('token'));
+        //                         cookies.set('idEstudiante',response.estudiante_id,{path:"/"})
+        //                         cookies.set('carreraEstudiante',response.descripcion_carrera,{path:"/"})
+        //                         window.location.href="/contable";
+        //                     }
+        //                 }
+        //             }
 
-                }
-            }else{
-              console.log("no llega") ;
-              dataSeleccionada.error='No se ha encontrado el usuario verifique los datos';
-              console.log(dataSeleccionada.error);
-              toast.error("No se ha encontrado el usuario verifique los datos", {position: toast.POSITION.TOP_CENTER});
-
-
-            }
-        })
-        .catch(error=>{
-           console.log ("es igual a 0");
-            dataSeleccionada.error="No se ha encontrado el usuario verifique los datos";
-            toast.error("No se ha encontrado el usuario verifique los datos", {position: toast.POSITION.TOP_CENTER});
+        //         }
+        //     }else{
+        //       console.log("no llega") ;
+        //       dataSeleccionada.error='No se ha encontrado el usuario verifique los datos';
+        //       console.log(dataSeleccionada.error);
+        //       toast.error("No se ha encontrado el usuario verifique los datos", {position: toast.POSITION.TOP_CENTER});
 
 
-        });
+        //     }
+        // })
+        // .catch(error=>{
+        //    console.log ("es igual a 0");
+        //     dataSeleccionada.error="No se ha encontrado el usuario verifique los datos";
+        //     toast.error("No se ha encontrado el usuario verifique los datos", {position: toast.POSITION.TOP_CENTER});
+
+
+        // });
     }
-
+    // console.log("imprimo fuera de la funcion");
+    // console.log(state);
 
     if(cookies.get('log')){             
         if(cookies.get('rol') === "Administrativo"){
@@ -162,7 +185,7 @@ export const LoginScreen = () => {
                                         <label className="form-label">Contraseña</label>
                                         <input type="password" name="password" onChange={handleChange} value={dataSeleccionada.password} className="form-control" id="password" required/>
                                     </div>                      
-                                    <button type="submit"  className="btn  back-istmas"><b>Iniciar Sesión</b></button>
+                                    <button type="submit"  className="btn  back-istmas" disabled={state.loading} ><b>Iniciar Sesión</b></button>
                                     </form>          
                                 </div>
                             </div>                                                          
