@@ -6,7 +6,7 @@ import Cookies from 'universal-cookie'
 import {AgregarDocente} from '../components/administrador/docentes/AgregarDocente'
 import { ListarDocentes } from '../components/administrador/docentes/ListarDocentes'
 import { HomeAdmin } from '../components/administrador/home/HomeAdmin';
-import { AgregarDiaHora } from '../components/administrador/horarios/AgregarDiaHora';
+import { AgregarDiaHora } from '../components/administrador/horarios/AgregarDiaHoraScreen';
 import InscribirEstudiantes from '../components/administrador/inscripción/InscribirEstudiantes'
 import {ListarEstudiantesInscritos} from '../components/administrador/inscripción/ListarEstudiantesInscritos'
 import ListarSolicitudMatricula from '../components/administrador/matriculas/ListarSolicitudMatricula'

@@ -3,7 +3,7 @@ import thunk from 'redux-thunk'
 import { administrativoReducer } from '../reducers/administrativoReducer/administrativoReducer';
 
 
-import { authReducer } from '../reducers/aurhReducer/authReducer';
+import { authReducer } from '../reducers/authReducer/authReducer';
 import { uiReducer } from '../reducers/uiReducers/uiReducer';
 
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;

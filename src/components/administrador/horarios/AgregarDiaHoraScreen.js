@@ -136,7 +136,7 @@ export const AgregarDiaHora = () => {
     }
 
     const peticionDelete = async(e) =>{
-        deleteTable();
+        //deleteTable();
         console.log("vamos a eliminar");
         console.log(formData.id_horario);
         await axios.delete(urlHorarios+"/"+formData.id_horario)

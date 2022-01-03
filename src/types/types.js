@@ -15,4 +15,11 @@ export const types = {
 
     ///////ADMINISTRATIVO/////////
     adminAgregarDocente:'[Admin] Agregar Docente',
+
+
+    ///////HORARIO////////////////
+    AgregarDiaHoraHorario:'[Admin] Agrear Dia Hora al Horario',
+    listarDiaHoraHorario:'[Admin] Listar Dia Hora del Horario',
+    EditarDiaHoraHorario:'[Admin] Editar Dia Hora del Horario',
+    EliminarDiaHoraHorario:'[Admin] Eliminar Dia Hora del Horario',
 }
