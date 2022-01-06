@@ -1,15 +1,15 @@
-import axios from 'axios';
+// import axios from 'axios';
 import React, { useState } from 'react';
-import { ApiUrl } from '../../services/ApiRest'
+// import { ApiUrl } from '../../services/ApiRest'
 import { toast } from 'react-toastify'
-import validator from 'validator'
-import { useDispatch, useSelector, useStore } from 'react-redux';
+// import validator from 'validator'
+import { useDispatch, useSelector } from 'react-redux';
 import { setError, uiRemoveError } from '../../../actions/ui';
 import { adminAgregarDocente } from '../../../actions/administrativo';
 
 
 
-const urlAgregarDocente= ApiUrl+"registro-admin";
+// const urlAgregarDocente= ApiUrl+"registro-admin";
 
 export const AgregarDocente = () => {
 
@@ -90,7 +90,7 @@ export const AgregarDocente = () => {
 
     const peticionPost = async(e)=>{
         e.preventDefault();
-        if(password_administrativo == passwordConfirm){
+        if(password_administrativo === passwordConfirm){
             if (validarFormulario()){
                 const agregarDocenteFunction = async () =>{
 
@@ -165,22 +165,7 @@ export const AgregarDocente = () => {
     else{
         console.log("no estoy ingresando")
     }
-    const limpiar=()=>{
-        setconsolaSeleccionada({
-            nombres_administrativo:"",
-            apellidos_administrativo:"",
-            numero_identificacion_administrativo:"",
-            fecha_nacimiento_administrativo:"",
-            email_administrativo:"",
-            celular_administrativo:"",
-            password_administrativo:"",
-            passwordConfirm:"",
-            direccion_administrativo:"",
-            convencional_administrativo:"",
-            rol_administrativo:"Docente",
-            estado:""
-        });
-    } 
+   
     
 
 

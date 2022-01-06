@@ -5,7 +5,6 @@ import { ApiUrl } from "../components/services/ApiRest";
 import { types } from "../types/types";
 import { toast } from 'react-toastify';
 import Cookies from "universal-cookie";
-import { Redirect } from "react-router";
 import { uiFinalizarCargaAction, uiIniciarCargaAction } from "./ui";
 
 

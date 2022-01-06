@@ -1,7 +1,5 @@
 import React from 'react'
 import { Route } from 'react-router';
-import InscribirEstudiantes from '../components/administrador/inscripción/InscribirEstudiantes';
-import {ListarEstudiantesInscritos} from '../components/administrador/inscripción/ListarEstudiantesInscritos';
 import ListarSolicitudMatricula from '../components/administrador/matriculas/ListarSolicitudMatricula';
 import ListarPagos from '../components/administrador/pagos/ListarPagos';
 import { EditarPerfilContable } from '../components/contable/perfil/EditarPerfilContable';
@@ -27,8 +25,6 @@ export const RutasContable = () => {
 
                                    <Route path="/contable/Perfil" component={PerfilContable}/>
                                    <Route path="/contable/EditarPerfil" component={EditarPerfilContable}/>
-                                   <Route path="/contable/InscribirEstudiante" component={InscribirEstudiantes}/>
-                                   <Route path="/contable/ListarEstudiantesInscritos" component={ListarEstudiantesInscritos}/>
                                    <Route path="/contable/ListarSolicitudMatriculas" component={ListarSolicitudMatricula}/>
                                    <Route path="/contable/ListarPagos" component={ListarPagos}/>
 

@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Button, Link, makeStyles, Modal, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
+import { Button, makeStyles, Modal, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import 'bootstrap/dist/css/bootstrap.css';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ApiUrl } from '../../services/ApiRest';
 
 const baseUrl=ApiUrl+"estudiantes"; 
@@ -156,9 +156,9 @@ export const ListarEstudiantesInscritos = () => {
                                         <td>{consola.numero_identificacion_estudiante}</td>
                                         <td>{consola.celular_estudiante}</td>
                                         <td className="" style={{textAlign:"center"}}> 
-                                            <button className="btn btn-outline-success"  > 
-                                                <i className="puntero fas fa-pen"></i>
-                                            </button>
+                                            <Link className="btn btn-outline-success" to={"/administrativo/EditarEstudiantes/"+consola.id_estudiante} > 
+                                                <i className="puntero fas fa-pen"></i>{consola.id_estudiante}
+                                            </Link>
 
                                             <button className="btn btn-outline-danger" onClick={()=>seleccionarConsola(consola,'Eliminar')}  > 
                                                 <i className=" puntero fas fa-trash-alt" ></i>            

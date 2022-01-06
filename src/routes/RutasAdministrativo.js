@@ -7,8 +7,8 @@ import {AgregarDocente} from '../components/administrador/docentes/AgregarDocent
 import { ListarDocentes } from '../components/administrador/docentes/ListarDocentes'
 import { HomeAdmin } from '../components/administrador/home/HomeAdmin';
 import { AgregarDiaHora } from '../components/administrador/horarios/AgregarDiaHoraScreen';
-import InscribirEstudiantes from '../components/administrador/inscripción/InscribirEstudiantes'
-import {ListarEstudiantesInscritos} from '../components/administrador/inscripción/ListarEstudiantesInscritos'
+import RegistrarEstudiantes from '../components/administrador/estudiantes/RegistrarEstudiantes'
+import {ListarEstudiantesInscritos} from '../components/administrador/estudiantes/ListarEstudiantesInscritos'
 import ListarSolicitudMatricula from '../components/administrador/matriculas/ListarSolicitudMatricula'
 import ListarPagos from '../components/administrador/pagos/ListarPagos';
 import EditarPerfilAdministrativo from '../components/administrador/perfil/EditarPerfilAdministrativo'
@@ -21,6 +21,7 @@ import FooterDashboard from '../components/footer/FooterDashboard'
 import {NavbarGeneral} from '../components/navbar/NavbarGeneral'
 import { ApiUrl } from '../components/services/ApiRest'
 import Sidebar from '../components/sidebar/Sidebar'
+import { EditarEstudiantesScreen } from '../components/administrador/estudiantes/EditarEstudiantesScreen';
 
 //ruta hija no va a tener la palabra o etiqueta router pero si route
 const cookie = new Cookies();
@@ -34,6 +35,15 @@ const config = {
 
 export default class RutasAdministrativo extends Component {
     componentDidMount() {
+        if(!cookie.get("log")){
+            return(<Redirect to="/login" />);
+        }
+        //console.log(cookie.get("rol"));
+        if(cookie.get("rol") !== 'Administrativo'){
+           return(<Redirect to="/errorpermiso" />);
+        }
+
+        
         // Get que devuelve los datos de un estudiante recibiendo un id
         axios.get(urlAdministrativo+idAdministrativo   )
           .then(res => {
@@ -69,7 +79,7 @@ export default class RutasAdministrativo extends Component {
                     <Sidebar />
                     <div id="layoutSidenav_content">
                         <main>
-                            <div className="container-fluid">                       
+                            <div className="container-fluid px-4">                       
                                 <Contenido /> 
     
                                     <Route  path="/administrativo/HomeAdmin"  component={HomeAdmin} />                         
@@ -89,9 +99,10 @@ export default class RutasAdministrativo extends Component {
                                     <Route  path="/administrativo/ListarPersonalAdministrativo"  component={ListarPersonalAdministrativo} />                         
                                     <Route  path="/administrativo/VerInfoAdministrativo"  component={VerInfoAdministrativo} />                         
                                     
-                                    {/* Inscripciones */}
+                                    {/* Estudiantes */}
                                     <Route  path="/administrativo/ListarEstudiantesInscritos"  component={ListarEstudiantesInscritos} />                          
-                                    <Route  path="/administrativo/InscribirEstudiante"  component={InscribirEstudiantes} />   
+                                    <Route  path="/administrativo/RegistrarEstudiante"  component={RegistrarEstudiantes} />   
+                                    <Route  path="/administrativo/EditarEstudiantes/:id"  component={EditarEstudiantesScreen} />   
 
                                     {/*  Matriculas */}
                                     <Route  path="/administrativo/ListarSolicitudMatriculas"  component={ListarSolicitudMatricula} />   

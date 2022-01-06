@@ -134,7 +134,7 @@ export default class Sidebar extends Component {
                                     </div>
                                     <div className="collapse" id="collapseInscripcion" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                         <nav className="sb-sidenav-menu-nested nav">
-                                            <Link to="/administrativo/InscribirEstudiante"><div className="nav-link"  >Agregar Estudiante </div></Link>
+                                            <Link to="/administrativo/RegistrarEstudiante"><div className="nav-link"  >Registrar Estudiante </div></Link>
                                             <Link to="/administrativo/ListarEstudiantesInscritos">  <div className="nav-link" href="#">Listar Estudiantes Registrados </div></Link>                                                                                   
                                         </nav>
                                     </div>
@@ -207,7 +207,7 @@ export default class Sidebar extends Component {
                                     
                                 </div>
                             </div>
-                            <div className="sb-sidenav-footer">
+                            <div className="sb-sidenav-footer ">
                                 <div className="small">Usuario:</div>
                                     { cookie.get("nombres")+" "}
                                     { cookie.get("apellidos")}

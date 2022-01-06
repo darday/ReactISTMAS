@@ -42,6 +42,14 @@ export default class RutasEstudiante extends Component {
     }
     
     componentDidMount() {
+
+        if(!cookie.get("log")){
+            return(<Redirect to="/login" />);
+        }
+        //console.log(cookie.get("rol"));
+        if(cookie.get("rol") !== 'Administrativo'){
+           return(<Redirect to="/errorpermiso" />);
+        }
         // Get que devuelve los datos de un estudiante recibiendo un id devuelve dos valores de un array por eso lo separamos con [0] y[1]
   
           
