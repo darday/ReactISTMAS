@@ -27,8 +27,8 @@ export const LoginScreen = () => {
 
     const [dataSeleccionada, setdataSeleccionada] = useState({
         rol:'Estudiante',
-        ci:'',
-        password:'',
+        ci:'0603935008',
+        password:'Pass123',
         isLogged:false,
         error:''
     })

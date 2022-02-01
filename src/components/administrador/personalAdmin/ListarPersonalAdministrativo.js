@@ -69,6 +69,9 @@ export const ListarPersonalAdministrativo = () => {
     const [modalInsertar, setModalInsertar]=useState(false);
     const [modalEditar, setmodalEditar] = useState(false);
     const [modalDelete, setmodalDelete] = useState(false);
+
+    const [cargando, setcargando] = useState(true);
+
     
     
     const [consolaSeleccionada, setconsolaSeleccionada] = useState({
@@ -106,6 +109,7 @@ export const ListarPersonalAdministrativo = () => {
          script.src = `/assets/demo/datatables-demo.js`;
          script.async = true;
          document.body.appendChild(script); 
+         setcargando(false);
     }
     //Elimina la datatable
     const deleteTable=()=>{        
@@ -385,13 +389,20 @@ export const ListarPersonalAdministrativo = () => {
             </div>
         </div>
     )
-
-
     
       //ejecutar efectos secundarios
     useEffect(()=>{
         peticionGet();
     },[])
+
+    if(cargando){
+        return(
+            <div>
+                <h5>Cargando Datos...</h5>
+            </div>
+        )
+    }
+
 
     return (
         <div>
@@ -401,7 +412,7 @@ export const ListarPersonalAdministrativo = () => {
             <div className="card mb-4 " >
                 <div className="card-header back-istmas">
                     <i className="fas fa-table mr-1"></i>
-                    Lista Estudiantes Inscritos
+                    Listado del Personal Administrativo
                 </div>
                 
                 <div className="card-body">

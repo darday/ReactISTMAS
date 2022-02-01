@@ -43,52 +43,27 @@ export default class RutasEstudiante extends Component {
     
     componentDidMount() {
 
-        if(!cookie.get("log")){
-            return(<Redirect to="/login" />);
-        }
-        //console.log(cookie.get("rol"));
-        if(cookie.get("rol") !== 'Administrativo'){
-           return(<Redirect to="/errorpermiso" />);
-        }
-        // Get que devuelve los datos de un estudiante recibiendo un id devuelve dos valores de un array por eso lo separamos con [0] y[1]
-  
-          
-      /* comentada por que parece que no hace nada
-       axios.get(urlCarrera+cookie.get("idCarreraEstu")   )
+        axios.get(urlEstudiante+idEstudiante   )
           .then(res => {
-                //console.log("carreraaaaaaaaaaaaa");
-                const nombreCarrera = res.data.descripcion_carrera;
-                this.setState({nombreCarrera});
-                
-              
-
-                // cookie.set('nombreCarrera',nombreCarrera,{path:"/"})
-                // console.log(cookie.get("nombreCarrera")); 
             
-               
-          })*/
-
-          //window.location.href = window.location.href;
-
-          axios.get(urlEstudiante+idEstudiante   )
-          .then(res => {
-            const estudiante = res.data[1];
-            const carrera = res.data[0];
-            this.setState({ estudiante });
-            this.setState({ carrera });
-            // console.log(estudiante);
-            // console.log(carrera[0]);
-            // console.log("carrera"+ carrera[0].carrera_id);
+            const estudiante=res.data[0];
+            this.setState({estudiante})
+           
            
             cookie.set('nombres',estudiante.nombres_estudiante,{path:"/"})
             cookie.set('apellidos',estudiante.apellidos_estudiante,{path:"/"})
-            cookie.set('idCarreraEstu',carrera[0].carrera_id,{path:"/"})
+            cookie.set('idCarreraEstu',estudiante.carreras[0].id_carrera,{path:"/"})
+
+            console.log(cookie.get("nombres"));
+            console.log(cookie.get("apellidos")); 
+
+
 
             
-            // console.log(cookie.get("nombres"));
-            // console.log(cookie.get("apellidos")); 
-            //console.log(cookie.get("idCarreraEstu")); 
-         })
+           
+        })
+
+        
 
           
 
@@ -118,7 +93,6 @@ export default class RutasEstudiante extends Component {
                     <div id="layoutSidenav_content">
                         <main>
                             <div className="container-fluid">                       
-                                {/* <Contenido />  */}
                                 <div className="animate__animated animate__fadeIn" style={{}}>
                                     <br/>
                                     <br/>

@@ -48,12 +48,15 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 export const ListarEstudiantesInscritos = () => {
-   const styles = useStyles();
+    const styles = useStyles();
 
     const [data, setdata] = useState([]);
     const [modalEliminar, setmodalEliminar] = useState(false);
     const [modalEditar, setmodalEditar] = useState(false);
     const [consolaSeleccionada, setconsolaSeleccionada] = useState({});
+
+    const [cargando, setcargando] = useState(true);
+
 
     const peticionGet=async()=>{
         await axios.get(baseUrl)
@@ -67,6 +70,7 @@ export const ListarEstudiantesInscritos = () => {
         script.src = `/assets/demo/datatables-demo.js`;
         script.async = true;
         document.body.appendChild(script); 
+        setcargando(false)
     }
 
     const peticionDelete=async()=>{
@@ -121,6 +125,13 @@ export const ListarEstudiantesInscritos = () => {
     },[])
 
 
+    if(cargando){
+        return(
+            <div>
+                <h5>Cargando Datos...</h5>
+            </div>
+        )
+    }
 
     return (
         <div className="row animate__animated animate__fadeIn">
@@ -134,12 +145,13 @@ export const ListarEstudiantesInscritos = () => {
                 </div>
                 <div className="card-body">
                     <div className="table-responsive">
-                        <table className="table table-striped contenidoTabla"  id="dataTable" width="100%" >
+                        <table className="table table-striped contenidoTabla table-sm"  id="dataTable" width="100%" >
                             <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>Nombres</th>
                                     <th>Apellidos</th>
+                                    <th>Carrera</th>
                                     <th>Cédula</th>
                                     <th>Celular</th>
                                     <th>Acciones</th>
@@ -153,6 +165,7 @@ export const ListarEstudiantesInscritos = () => {
                                         <td>{index+1}</td>
                                         <td>{consola.nombres_estudiante}</td>
                                         <td>{consola.apellidos_estudiante}</td>
+                                        <td>{consola.carreras[0].descripcion_carrera}</td>
                                         <td>{consola.numero_identificacion_estudiante}</td>
                                         <td>{consola.celular_estudiante}</td>
                                         <td className="" style={{textAlign:"center"}}> 

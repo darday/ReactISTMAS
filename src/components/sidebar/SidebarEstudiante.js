@@ -11,22 +11,35 @@ const idEstudiante = cookie.get("idEstudiante");    //declaramos una variable pa
 
 
 export default class SidebarEstudiante extends Component {
+
+
     
     componentDidMount() {
-        // Get que devuelve los datos de un estudiante recibiendo un id
-        axios.get(urlEstudiante+idEstudiante   )
+      axios.get(urlEstudiante+idEstudiante   )
           .then(res => {
-            const estudiante = res.data[1];
-            this.setState({ estudiante });
-          //  console.log(estudiante);
+            
+            res=res.data[0];
            
-            cookie.set('nombres',estudiante.nombres_estudiante,{path:"/"})
-            cookie.set('apellidos',estudiante.apellidos_estudiante,{path:"/"})
+           
+            cookie.set('nombres',res.nombres_estudiante,{path:"/"})
+            cookie.set('apellidos',res.apellidos_estudiante,{path:"/"})
+            cookie.set('idCarreraEstu',res.carreras[0].id_carrera,{path:"/"})
 
-            // console.log(cookie.get("nombreEstudiante"));
-            // console.log(cookie.get("apellidoEstudiante")); 
-          })
+            console.log(cookie.get("nombres"));
+            console.log(cookie.get("apellidos")); 
+
+
+
+            
+           
+        })
+
+       
+
+        
     }
+
+    
     
     render() {
         
@@ -176,6 +189,9 @@ export default class SidebarEstudiante extends Component {
                            
                             { cookie.get("nombres")+" "}
                             { cookie.get("apellidos")}
+
+                            {console.log(cookie.get("nombres"))}
+                            
         
                         </div>
                 </nav>
